@@ -1,0 +1,970 @@
+{
+  "Products": [
+    {
+      "SKU": "MED-001",
+      "product_name": "Paracetamol 500mg Tablets",
+      "suppliers": ["MedBridge Egypt", "PharmaLife", "Sinai Med"],
+      "quantity": 75,
+      "expire_date": "2028-02-19",
+      "price": 94.54,
+      "category": "Pain Relief"
+    },
+    {
+      "SKU": "MED-002",
+      "product_name": "Ibuprofen 200mg Tablets",
+      "suppliers": ["BioMed Co.", "Horizon Pharma"],
+      "quantity": 236,
+      "expire_date": "2031-03-10",
+      "price": 72.39,
+      "category": "Anti-inflammatory"
+    },
+    {
+      "SKU": "MED-003",
+      "product_name": "Diclofenac 1% Topical Gel",
+      "suppliers": ["MedBridge Egypt"],
+      "quantity": 58,
+      "expire_date": "2027-02-06",
+      "price": 160.66,
+      "category": "Anti-inflammatory"
+    },
+    {
+      "SKU": "MED-004",
+      "product_name": "Naproxen 250mg Tablets",
+      "suppliers": ["Masr Pharma"],
+      "quantity": 296,
+      "expire_date": "2027-01-18",
+      "price": 294.25,
+      "category": "Anti-inflammatory"
+    },
+    {
+      "SKU": "MED-005",
+      "product_name": "Amoxicillin 500mg Capsules",
+      "suppliers": ["Delta Drugs"],
+      "quantity": 228,
+      "expire_date": "2028-05-25",
+      "price": 175.12,
+      "category": "Antibiotics"
+    },
+    {
+      "SKU": "MED-006",
+      "product_name": "Azithromycin 500mg Tablets",
+      "suppliers": ["CairoMed Distributors", "MediServe Egypt"],
+      "quantity": 104,
+      "expire_date": "2030-05-19",
+      "price": 138.85,
+      "category": "Antibiotics"
+    },
+    {
+      "SKU": "MED-007",
+      "product_name": "Cefalexin 500mg Capsules",
+      "suppliers": ["Nile Medics", "PharmaLife"],
+      "quantity": 252,
+      "expire_date": "2031-06-17",
+      "price": 106.98,
+      "category": "Antibiotics"
+    },
+    {
+      "SKU": "MED-008",
+      "product_name": "Metronidazole 500mg Tablets",
+      "suppliers": ["Alexandria Pharma"],
+      "quantity": 171,
+      "expire_date": "2026-08-28",
+      "price": 84.02,
+      "category": "Antibiotics"
+    },
+    {
+      "SKU": "MED-009",
+      "product_name": "Ciprofloxacin 500mg Tablets",
+      "suppliers": ["El Shifa Distributors", "LifeLine Pharma"],
+      "quantity": 51,
+      "expire_date": "2026-08-23",
+      "price": 264.31,
+      "category": "Antibiotics"
+    },
+    {
+      "SKU": "MED-010",
+      "product_name": "Clarithromycin 500mg Tablets",
+      "suppliers": ["Al Amal Medical"],
+      "quantity": 264,
+      "expire_date": "2031-12-16",
+      "price": 180.97,
+      "category": "Antibiotics"
+    },
+    {
+      "SKU": "MED-011",
+      "product_name": "Cetirizine 10mg Tablets",
+      "suppliers": ["CairoMed Distributors"],
+      "quantity": 280,
+      "expire_date": "2028-02-01",
+      "price": 37.24,
+      "category": "Allergy"
+    },
+    {
+      "SKU": "MED-012",
+      "product_name": "Loratadine 10mg Tablets",
+      "suppliers": ["TibaMed"],
+      "quantity": 54,
+      "expire_date": "2028-08-21",
+      "price": 239.57,
+      "category": "Allergy"
+    },
+    {
+      "SKU": "MED-013",
+      "product_name": "Fexofenadine 120mg Tablets",
+      "suppliers": ["HealthPlus", "MediServe Egypt"],
+      "quantity": 311,
+      "expire_date": "2026-06-12",
+      "price": 93.71,
+      "category": "Allergy"
+    },
+    {
+      "SKU": "MED-014",
+      "product_name": "Vitamin C 1000mg Effervescent",
+      "suppliers": ["Blue Nile Supplies", "MedSupply Co."],
+      "quantity": 356,
+      "expire_date": "2031-11-12",
+      "price": 208.45,
+      "category": "Vitamins"
+    },
+    {
+      "SKU": "MED-015",
+      "product_name": "Vitamin D3 1000 IU Capsules",
+      "suppliers": ["Giza Health Supplies", "Nile Medics"],
+      "quantity": 124,
+      "expire_date": "2029-07-10",
+      "price": 237.71,
+      "category": "Vitamins"
+    },
+    {
+      "SKU": "MED-016",
+      "product_name": "Folic Acid 5mg Tablets",
+      "suppliers": ["Giza Health Supplies"],
+      "quantity": 222,
+      "expire_date": "2029-05-13",
+      "price": 54.5,
+      "category": "Vitamins"
+    },
+    {
+      "SKU": "MED-017",
+      "product_name": "Multivitamin Adults Tablets",
+      "suppliers": ["Nile Medics", "Sinai Med"],
+      "quantity": 57,
+      "expire_date": "2027-02-14",
+      "price": 13.17,
+      "category": "Vitamins"
+    },
+    {
+      "SKU": "MED-018",
+      "product_name": "Zinc Sulfate 25mg Tablets",
+      "suppliers": ["El Shifa Distributors"],
+      "quantity": 129,
+      "expire_date": "2027-06-27",
+      "price": 182.0,
+      "category": "Vitamins"
+    },
+    {
+      "SKU": "MED-019",
+      "product_name": "Omeprazole 20mg Capsules",
+      "suppliers": ["MedSupply Co.", "MediServe Egypt"],
+      "quantity": 145,
+      "expire_date": "2027-10-09",
+      "price": 135.64,
+      "category": "Gastrointestinal"
+    },
+    {
+      "SKU": "MED-020",
+      "product_name": "Esomeprazole 20mg Capsules",
+      "suppliers": ["El Shifa Distributors", "NutriHealth"],
+      "quantity": 380,
+      "expire_date": "2031-12-07",
+      "price": 112.86,
+      "category": "Gastrointestinal"
+    },
+    {
+      "SKU": "MED-021",
+      "product_name": "Famotidine 20mg Tablets",
+      "suppliers": ["New Hope Med"],
+      "quantity": 303,
+      "expire_date": "2027-03-01",
+      "price": 111.79,
+      "category": "Gastrointestinal"
+    },
+    {
+      "SKU": "MED-022",
+      "product_name": "Loperamide 2mg Tablets",
+      "suppliers": ["Giza Health Supplies"],
+      "quantity": 79,
+      "expire_date": "2027-09-29",
+      "price": 312.5,
+      "category": "Gastrointestinal"
+    },
+    {
+      "SKU": "MED-023",
+      "product_name": "Oral Rehydration Salts Sachets",
+      "suppliers": ["TibaMed", "Upper Nile Pharma"],
+      "quantity": 127,
+      "expire_date": "2028-04-13",
+      "price": 253.99,
+      "category": "Gastrointestinal"
+    },
+    {
+      "SKU": "MED-024",
+      "product_name": "Dextromethorphan Syrup 120ml",
+      "suppliers": ["Giza Health Supplies", "Masr Pharma", "MedBridge Egypt"],
+      "quantity": 278,
+      "expire_date": "2026-07-28",
+      "price": 176.1,
+      "category": "Cough & Cold"
+    },
+    {
+      "SKU": "MED-025",
+      "product_name": "Guaifenesin Syrup 120ml",
+      "suppliers": ["Masr Pharma"],
+      "quantity": 236,
+      "expire_date": "2026-06-30",
+      "price": 291.98,
+      "category": "Cough & Cold"
+    },
+    {
+      "SKU": "MED-026",
+      "product_name": "Phenylephrine 10mg Tablets",
+      "suppliers": ["Sinai Med"],
+      "quantity": 86,
+      "expire_date": "2028-12-08",
+      "price": 226.62,
+      "category": "Cough & Cold"
+    },
+    {
+      "SKU": "MED-027",
+      "product_name": "Betadine 10% Solution 120ml",
+      "suppliers": ["LifeLine Pharma"],
+      "quantity": 246,
+      "expire_date": "2030-10-18",
+      "price": 197.57,
+      "category": "Antiseptic"
+    },
+    {
+      "SKU": "MED-028",
+      "product_name": "Chlorhexidine 0.2% Mouthwash 250ml",
+      "suppliers": ["HealthPlus", "NilePharma"],
+      "quantity": 58,
+      "expire_date": "2027-09-03",
+      "price": 331.32,
+      "category": "Antiseptic"
+    },
+    {
+      "SKU": "MED-029",
+      "product_name": "Clotrimazole 1% Cream 20g",
+      "suppliers": ["CairoMed Distributors", "NutriHealth"],
+      "quantity": 209,
+      "expire_date": "2027-08-30",
+      "price": 208.05,
+      "category": "Antifungal"
+    },
+    {
+      "SKU": "MED-030",
+      "product_name": "Fluconazole 150mg Capsule",
+      "suppliers": ["BioMed Co.", "CairoMed Distributors"],
+      "quantity": 177,
+      "expire_date": "2026-06-13",
+      "price": 133.98,
+      "category": "Antifungal"
+    },
+    {
+      "SKU": "MED-031",
+      "product_name": "Ketoconazole 2% Shampoo 60ml",
+      "suppliers": ["Alexandria Pharma", "New Hope Med"],
+      "quantity": 147,
+      "expire_date": "2029-12-19",
+      "price": 236.76,
+      "category": "Antifungal"
+    },
+    {
+      "SKU": "MED-032",
+      "product_name": "Hydrocortisone 1% Cream 20g",
+      "suppliers": ["MedBridge Egypt", "MediServe Egypt"],
+      "quantity": 228,
+      "expire_date": "2027-09-26",
+      "price": 341.1,
+      "category": "Dermatology"
+    },
+    {
+      "SKU": "MED-033",
+      "product_name": "Mupirocin 2% Ointment 15g",
+      "suppliers": ["MedBridge Egypt"],
+      "quantity": 103,
+      "expire_date": "2027-12-27",
+      "price": 341.91,
+      "category": "Dermatology"
+    },
+    {
+      "SKU": "MED-034",
+      "product_name": "Salicylic Acid 2% Gel 30g",
+      "suppliers": ["Delta Drugs", "NilePharma"],
+      "quantity": 397,
+      "expire_date": "2030-08-14",
+      "price": 324.33,
+      "category": "Dermatology"
+    },
+    {
+      "SKU": "MED-035",
+      "product_name": "Amlodipine 5mg Tablets",
+      "suppliers": ["LifeLine Pharma", "MedBridge Egypt", "PharmaLife"],
+      "quantity": 147,
+      "expire_date": "2027-03-19",
+      "price": 100.71,
+      "category": "Hypertension"
+    },
+    {
+      "SKU": "MED-036",
+      "product_name": "Losartan 50mg Tablets",
+      "suppliers": ["CairoMed Distributors", "MedBridge Egypt"],
+      "quantity": 260,
+      "expire_date": "2031-03-01",
+      "price": 85.63,
+      "category": "Hypertension"
+    },
+    {
+      "SKU": "MED-037",
+      "product_name": "Candesartan 8mg Tablets",
+      "suppliers": ["NutriHealth", "Upper Nile Pharma"],
+      "quantity": 136,
+      "expire_date": "2028-03-02",
+      "price": 85.79,
+      "category": "Hypertension"
+    },
+    {
+      "SKU": "MED-038",
+      "product_name": "Atorvastatin 20mg Tablets",
+      "suppliers": ["Giza Health Supplies", "Sinai Med"],
+      "quantity": 55,
+      "expire_date": "2029-02-17",
+      "price": 338.74,
+      "category": "Cardiology"
+    },
+    {
+      "SKU": "MED-039",
+      "product_name": "Rosuvastatin 10mg Tablets",
+      "suppliers": ["Masr Pharma", "Safa Pharma"],
+      "quantity": 224,
+      "expire_date": "2029-09-18",
+      "price": 241.04,
+      "category": "Cardiology"
+    },
+    {
+      "SKU": "MED-040",
+      "product_name": "Metformin 500mg Tablets",
+      "suppliers": ["HealthPlus"],
+      "quantity": 153,
+      "expire_date": "2028-12-23",
+      "price": 70.71,
+      "category": "Diabetes Care"
+    },
+    {
+      "SKU": "MED-041",
+      "product_name": "Glimepiride 2mg Tablets",
+      "suppliers": ["HealthPlus"],
+      "quantity": 325,
+      "expire_date": "2029-07-08",
+      "price": 157.75,
+      "category": "Diabetes Care"
+    },
+    {
+      "SKU": "MED-042",
+      "product_name": "Insulin Glargine 100 IU/ml Pen",
+      "suppliers": ["Safa Pharma", "TibaMed"],
+      "quantity": 79,
+      "expire_date": "2028-02-18",
+      "price": 140.97,
+      "category": "Diabetes Care"
+    },
+    {
+      "SKU": "MED-043",
+      "product_name": "Salbutamol Inhaler 100mcg",
+      "suppliers": ["CairoMed Distributors", "TrustCare Supplies"],
+      "quantity": 243,
+      "expire_date": "2028-03-18",
+      "price": 10.58,
+      "category": "Respiratory"
+    },
+    {
+      "SKU": "MED-044",
+      "product_name": "Budesonide/Formoterol Inhaler",
+      "suppliers": ["Blue Nile Supplies", "MedSupply Co."],
+      "quantity": 360,
+      "expire_date": "2029-07-09",
+      "price": 323.06,
+      "category": "Respiratory"
+    },
+    {
+      "SKU": "MED-045",
+      "product_name": "Montelukast 10mg Tablets",
+      "suppliers": ["HealthPlus", "LifeLine Pharma", "MedBridge Egypt"],
+      "quantity": 173,
+      "expire_date": "2030-07-31",
+      "price": 182.42,
+      "category": "Respiratory"
+    },
+    {
+      "SKU": "MED-046",
+      "product_name": "Oxymetazoline Nasal Spray 0.05%",
+      "suppliers": ["Pyramids Medical", "TrustCare Supplies"],
+      "quantity": 171,
+      "expire_date": "2028-02-25",
+      "price": 198.5,
+      "category": "ENT"
+    },
+    {
+      "SKU": "MED-047",
+      "product_name": "Ciprofloxacin 0.3% Eye Drops 5ml",
+      "suppliers": ["New Hope Med", "Pyramids Medical"],
+      "quantity": 366,
+      "expire_date": "2027-12-14",
+      "price": 264.37,
+      "category": "Ophthalmic"
+    },
+    {
+      "SKU": "MED-048",
+      "product_name": "Artificial Tears Eye Drops 10ml",
+      "suppliers": ["Al Amal Medical", "Upper Nile Pharma"],
+      "quantity": 227,
+      "expire_date": "2026-01-02",
+      "price": 196.3,
+      "category": "Ophthalmic"
+    },
+    {
+      "SKU": "MED-049",
+      "product_name": "Miconazole 2% Oral Gel 40g",
+      "suppliers": ["Alexandria Pharma", "Upper Nile Pharma"],
+      "quantity": 240,
+      "expire_date": "2029-08-12",
+      "price": 277.16,
+      "category": "Antifungal"
+    },
+    {
+      "SKU": "MED-050",
+      "product_name": "Nystatin Oral Suspension 100ml",
+      "suppliers": ["Horizon Pharma", "New Hope Med"],
+      "quantity": 129,
+      "expire_date": "2027-11-27",
+      "price": 183.8,
+      "category": "Antifungal"
+    },
+    {
+      "SKU": "MED-051",
+      "product_name": "Calcium Carbonate 600mg Tablets",
+      "suppliers": ["MedSupply Co.", "Safa Pharma", "Upper Nile Pharma"],
+      "quantity": 359,
+      "expire_date": "2029-10-04",
+      "price": 225.2,
+      "category": "Vitamins"
+    },
+    {
+      "SKU": "MED-052",
+      "product_name": "Magnesium 250mg Tablets",
+      "suppliers": ["NutriHealth"],
+      "quantity": 140,
+      "expire_date": "2028-07-09",
+      "price": 238.75,
+      "category": "Vitamins"
+    },
+    {
+      "SKU": "MED-053",
+      "product_name": "Iron + Folic Acid Tablets",
+      "suppliers": ["BioMed Co."],
+      "quantity": 32,
+      "expire_date": "2031-05-01",
+      "price": 25.71,
+      "category": "Women’s Health"
+    },
+    {
+      "SKU": "MED-054",
+      "product_name": "Ethinylestradiol/Levonorgestrel Tablets",
+      "suppliers": ["Green Crescent Med", "MedBridge Egypt"],
+      "quantity": 57,
+      "expire_date": "2028-03-07",
+      "price": 164.84,
+      "category": "Women’s Health"
+    },
+    {
+      "SKU": "MED-055",
+      "product_name": "Povidone-Iodine 10% Ointment 20g",
+      "suppliers": ["Pyramids Medical", "Royal Med", "TrustCare Supplies"],
+      "quantity": 224,
+      "expire_date": "2026-01-23",
+      "price": 92.95,
+      "category": "Antiseptic"
+    },
+    {
+      "SKU": "MED-056",
+      "product_name": "Lidocaine 2% Topical Gel 30g",
+      "suppliers": ["Green Crescent Med"],
+      "quantity": 237,
+      "expire_date": "2031-10-23",
+      "price": 84.41,
+      "category": "Pain Relief"
+    },
+    {
+      "SKU": "MED-057",
+      "product_name": "Acetylcysteine 200mg Sachets",
+      "suppliers": ["CairoMed Distributors", "El Shifa Distributors"],
+      "quantity": 147,
+      "expire_date": "2027-05-13",
+      "price": 321.94,
+      "category": "Respiratory"
+    },
+    {
+      "SKU": "MED-058",
+      "product_name": "Simethicone 80mg Chewable Tablets",
+      "suppliers": ["BioMed Co.", "PharmaLife"],
+      "quantity": 257,
+      "expire_date": "2029-07-23",
+      "price": 236.98,
+      "category": "Gastrointestinal"
+    },
+    {
+      "SKU": "MED-059",
+      "product_name": "Bismuth Subsalicylate Suspension 240ml",
+      "suppliers": ["NutriHealth", "TibaMed"],
+      "quantity": 388,
+      "expire_date": "2030-10-14",
+      "price": 313.29,
+      "category": "Gastrointestinal"
+    },
+    {
+      "SKU": "MED-060",
+      "product_name": "Probiotic Capsules",
+      "suppliers": ["Horizon Pharma", "MediServe Egypt"],
+      "quantity": 101,
+      "expire_date": "2031-04-29",
+      "price": 262.84,
+      "category": "Gastrointestinal"
+    },
+    {
+      "SKU": "MED-061",
+      "product_name": "Doxylamine/Pyridoxine Tablets",
+      "suppliers": ["Giza Health Supplies", "Green Crescent Med"],
+      "quantity": 146,
+      "expire_date": "2029-02-09",
+      "price": 295.55,
+      "category": "Women’s Health"
+    },
+    {
+      "SKU": "MED-062",
+      "product_name": "Nifedipine 10mg Capsules",
+      "suppliers": ["Masr Pharma", "Royal Med"],
+      "quantity": 142,
+      "expire_date": "2026-11-14",
+      "price": 103.36,
+      "category": "Hypertension"
+    },
+    {
+      "SKU": "MED-063",
+      "product_name": "Spironolactone 25mg Tablets",
+      "suppliers": [
+        "Giza Health Supplies",
+        "Mansoura Medical",
+        "Upper Nile Pharma"
+      ],
+      "quantity": 191,
+      "expire_date": "2026-11-27",
+      "price": 118.7,
+      "category": "Cardiology"
+    },
+    {
+      "SKU": "MED-064",
+      "product_name": "Warfarin 5mg Tablets",
+      "suppliers": ["BioMed Co."],
+      "quantity": 138,
+      "expire_date": "2027-09-18",
+      "price": 140.23,
+      "category": "Cardiology"
+    },
+    {
+      "SKU": "MED-065",
+      "product_name": "Aspirin 81mg Enteric Tablets",
+      "suppliers": ["Alexandria Pharma", "Blue Nile Supplies", "MedSupply Co."],
+      "quantity": 228,
+      "expire_date": "2031-03-24",
+      "price": 122.5,
+      "category": "Cardiology"
+    },
+    {
+      "SKU": "MED-066",
+      "product_name": "Benzydamine 0.15% Mouthwash 200ml",
+      "suppliers": ["Alexandria Pharma", "CairoMed Distributors"],
+      "quantity": 235,
+      "expire_date": "2026-03-22",
+      "price": 142.42,
+      "category": "ENT"
+    },
+    {
+      "SKU": "MED-067",
+      "product_name": "Mebeverine 135mg Tablets",
+      "suppliers": ["Pyramids Medical", "Royal Med"],
+      "quantity": 23,
+      "expire_date": "2029-05-08",
+      "price": 330.53,
+      "category": "Gastrointestinal"
+    },
+    {
+      "SKU": "MED-068",
+      "product_name": "Dicyclomine 10mg Tablets",
+      "suppliers": ["MedBridge Egypt", "MediServe Egypt"],
+      "quantity": 234,
+      "expire_date": "2028-06-22",
+      "price": 192.99,
+      "category": "Gastrointestinal"
+    },
+    {
+      "SKU": "MED-069",
+      "product_name": "Pantoprazole 40mg Tablets",
+      "suppliers": ["Giza Health Supplies", "Mansoura Medical"],
+      "quantity": 243,
+      "expire_date": "2030-05-12",
+      "price": 175.12,
+      "category": "Gastrointestinal"
+    },
+    {
+      "SKU": "MED-070",
+      "product_name": "Risperidone 2mg Tablets",
+      "suppliers": ["New Hope Med", "PharmaLife"],
+      "quantity": 227,
+      "expire_date": "2031-03-30",
+      "price": 256.22,
+      "category": "CNS"
+    },
+    {
+      "SKU": "MED-071",
+      "product_name": "Sertraline 50mg Tablets",
+      "suppliers": ["TibaMed"],
+      "quantity": 293,
+      "expire_date": "2030-06-02",
+      "price": 19.17,
+      "category": "CNS"
+    },
+    {
+      "SKU": "MED-072",
+      "product_name": "Omeprazole 10mg Suspension 100ml",
+      "suppliers": ["Al Amal Medical", "New Hope Med"],
+      "quantity": 33,
+      "expire_date": "2030-10-22",
+      "price": 38.54,
+      "category": "Gastrointestinal"
+    },
+    {
+      "SKU": "MED-073",
+      "product_name": "Sodium Chloride 0.9% Nasal Spray",
+      "suppliers": ["MedBridge Egypt"],
+      "quantity": 256,
+      "expire_date": "2028-12-01",
+      "price": 71.79,
+      "category": "ENT"
+    },
+    {
+      "SKU": "MED-074",
+      "product_name": "ORS Zinc Sachets",
+      "suppliers": ["Alexandria Pharma", "Sinai Med"],
+      "quantity": 252,
+      "expire_date": "2030-04-02",
+      "price": 121.13,
+      "category": "Pediatric"
+    },
+    {
+      "SKU": "MED-075",
+      "product_name": "Pediatric Paracetamol 120mg/5ml Syrup",
+      "suppliers": ["Green Crescent Med", "NutriHealth"],
+      "quantity": 235,
+      "expire_date": "2026-12-02",
+      "price": 95.77,
+      "category": "Pediatric"
+    },
+    {
+      "SKU": "MED-076",
+      "product_name": "Dexpanthenol 5% Cream 30g",
+      "suppliers": ["LifeLine Pharma", "NilePharma"],
+      "quantity": 296,
+      "expire_date": "2029-12-04",
+      "price": 27.71,
+      "category": "Dermatology"
+    },
+    {
+      "SKU": "MED-077",
+      "product_name": "Retinol 0.5% Serum 30ml",
+      "suppliers": ["Masr Pharma"],
+      "quantity": 55,
+      "expire_date": "2026-06-14",
+      "price": 275.62,
+      "category": "Dermatology"
+    },
+    {
+      "SKU": "MED-078",
+      "product_name": "Urea 10% Cream 50g",
+      "suppliers": ["Mansoura Medical"],
+      "quantity": 122,
+      "expire_date": "2027-09-17",
+      "price": 295.34,
+      "category": "Dermatology"
+    },
+    {
+      "SKU": "MED-079",
+      "product_name": "Calamine Lotion 100ml",
+      "suppliers": ["BioMed Co."],
+      "quantity": 262,
+      "expire_date": "2028-06-11",
+      "price": 237.62,
+      "category": "Dermatology"
+    },
+    {
+      "SKU": "MED-080",
+      "product_name": "Antacid Suspension 200ml",
+      "suppliers": ["Giza Health Supplies", "TrustCare Supplies"],
+      "quantity": 208,
+      "expire_date": "2027-04-15",
+      "price": 67.05,
+      "category": "Gastrointestinal"
+    }
+  ],
+  "Suppliers": [
+    {
+      "supplier_name": "NilePharma",
+      "products_provided": 3,
+      "contact_name": "Tarek Khaled",
+      "contact_email": "tarek.khaled@nilepharma.com",
+      "contact_phone": "+20-103-242-2679",
+      "address": "190 Corniche Rd, Nasr City, Cairo, Egypt"
+    },
+    {
+      "supplier_name": "CairoMed Distributors",
+      "products_provided": 8,
+      "contact_name": "Salma Ashraf",
+      "contact_email": "salma.ashraf@cairomeddistributors.com",
+      "contact_phone": "+20-100-195-4582",
+      "address": "152 El-Gomhoreya St, Maadi, Cairo, Egypt"
+    },
+    {
+      "supplier_name": "MedSupply Co.",
+      "products_provided": 5,
+      "contact_name": "Hassan Fouda",
+      "contact_email": "hassan.fouda@medsupplyco.com",
+      "contact_phone": "+20-128-529-4611",
+      "address": "144 Gamal Abdel Nasser St, Nasr City, Cairo, Egypt"
+    },
+    {
+      "supplier_name": "HealthPlus",
+      "products_provided": 5,
+      "contact_name": "Eman Khalifa",
+      "contact_email": "eman.khalifa@healthplus.com",
+      "contact_phone": "+20-126-448-5552",
+      "address": "2 Mostafa Kamel St, Talkha, Mansoura, Egypt"
+    },
+    {
+      "supplier_name": "BioMed Co.",
+      "products_provided": 6,
+      "contact_name": "Omar Mostafa",
+      "contact_email": "omar.mostafa@biomedco.com",
+      "contact_phone": "+20-111-467-6635",
+      "address": "27 Tahrir St, El Mahatta, Tanta, Egypt"
+    },
+    {
+      "supplier_name": "Delta Drugs",
+      "products_provided": 2,
+      "contact_name": "Lobna Fouad",
+      "contact_email": "lobna.fouad@deltadrugs.com",
+      "contact_phone": "+20-121-487-2291",
+      "address": "187 Makram Ebeid St, Heliopolis, Cairo, Egypt"
+    },
+    {
+      "supplier_name": "Alexandria Pharma",
+      "products_provided": 6,
+      "contact_name": "Rania Hamdy",
+      "contact_email": "rania.hamdy@alexandriapharma.com",
+      "contact_phone": "+20-121-146-4733",
+      "address": "148 Gamal Abdel Nasser St, El Salam, Zagazig, Egypt"
+    },
+    {
+      "supplier_name": "Mansoura Medical",
+      "products_provided": 3,
+      "contact_name": "Reham Hamdy",
+      "contact_email": "reham.hamdy@mansouramedical.com",
+      "contact_phone": "+20-114-564-6977",
+      "address": "60 Tahrir St, Maadi, Cairo, Egypt"
+    },
+    {
+      "supplier_name": "Giza Health Supplies",
+      "products_provided": 9,
+      "contact_name": "Khaled Samir",
+      "contact_email": "khaled.samir@gizahealthsupplies.com",
+      "contact_phone": "+20-111-723-3803",
+      "address": "54 El-Geish Rd, El Salam, Zagazig, Egypt"
+    },
+    {
+      "supplier_name": "Upper Nile Pharma",
+      "products_provided": 6,
+      "contact_name": "Rania Ashraf",
+      "contact_email": "rania.ashraf@uppernilepharma.com",
+      "contact_phone": "+20-114-755-4598",
+      "address": "42 Makram Ebeid St, Smouha, Alexandria, Egypt"
+    },
+    {
+      "supplier_name": "Sinai Med",
+      "products_provided": 5,
+      "contact_name": "Salma Hegazy",
+      "contact_email": "salma.hegazy@sinaimed.com",
+      "contact_phone": "+20-116-374-2084",
+      "address": "59 El-Nasr St, Heliopolis, Cairo, Egypt"
+    },
+    {
+      "supplier_name": "Lotus Pharma",
+      "products_provided": 0,
+      "contact_name": "Nour Farouk",
+      "contact_email": "nour.farouk@lotuspharma.com",
+      "contact_phone": "+20-116-758-8517",
+      "address": "55 El-Geish Rd, El Mahatta, Tanta, Egypt"
+    },
+    {
+      "supplier_name": "Pyramids Medical",
+      "products_provided": 4,
+      "contact_name": "Omar Fouad",
+      "contact_email": "omar.fouad@pyramidsmedical.com",
+      "contact_phone": "+20-128-369-8019",
+      "address": "64 Abdel Salam Aref St, Dokki, Giza, Egypt"
+    },
+    {
+      "supplier_name": "Blue Nile Supplies",
+      "products_provided": 3,
+      "contact_name": "Hany Khalifa",
+      "contact_email": "hany.khalifa@bluenilesupplies.com",
+      "contact_phone": "+20-108-605-2489",
+      "address": "93 Gamal Abdel Nasser St, El-Tagneed, Ismailia, Egypt"
+    },
+    {
+      "supplier_name": "Horizon Pharma",
+      "products_provided": 3,
+      "contact_name": "Reham Mahmoud",
+      "contact_email": "reham.mahmoud@horizonpharma.com",
+      "contact_phone": "+20-106-710-2040",
+      "address": "40 El-Geish Rd, New Cairo, Cairo, Egypt"
+    },
+    {
+      "supplier_name": "Royal Med",
+      "products_provided": 3,
+      "contact_name": "Mostafa ElSayed",
+      "contact_email": "mostafa.elsayed@royalmed.com",
+      "contact_phone": "+20-120-796-2876",
+      "address": "136 Corniche Rd, Nasser City, Sohag, Egypt"
+    },
+    {
+      "supplier_name": "Safa Pharma",
+      "products_provided": 3,
+      "contact_name": "Salma Abdelaziz",
+      "contact_email": "salma.abdelaziz@safapharma.com",
+      "contact_phone": "+20-111-400-8123",
+      "address": "197 El-Geish Rd, Talkha, Mansoura, Egypt"
+    },
+    {
+      "supplier_name": "El Shifa Distributors",
+      "products_provided": 4,
+      "contact_name": "Khaled Badawy",
+      "contact_email": "khaled.badawy@elshifadistributors.com",
+      "contact_phone": "+20-118-880-3927",
+      "address": "185 Abdel Salam Aref St, Nasr City, Cairo, Egypt"
+    },
+    {
+      "supplier_name": "Al Amal Medical",
+      "products_provided": 3,
+      "contact_name": "Heba Farouk",
+      "contact_email": "heba.farouk@alamalmedical.com",
+      "contact_phone": "+20-128-723-4258",
+      "address": "161 Corniche Rd, New Cairo, Cairo, Egypt"
+    },
+    {
+      "supplier_name": "TibaMed",
+      "products_provided": 5,
+      "contact_name": "Omar Samir",
+      "contact_email": "omar.samir@tibamed.com",
+      "contact_phone": "+20-109-431-9005",
+      "address": "139 Ahmed Orabi St, 6th of October, Giza, Egypt"
+    },
+    {
+      "supplier_name": "Masr Pharma",
+      "products_provided": 6,
+      "contact_name": "Mohamed Khaled",
+      "contact_email": "mohamed.khaled@masrpharma.com",
+      "contact_phone": "+20-103-999-2290",
+      "address": "79 Gamal Abdel Nasser St, El Salam, Zagazig, Egypt"
+    },
+    {
+      "supplier_name": "New Hope Med",
+      "products_provided": 6,
+      "contact_name": "Sara Ashraf",
+      "contact_email": "sara.ashraf@newhopemed.com",
+      "contact_phone": "+20-102-775-8787",
+      "address": "18 Ahmed Orabi St, El Koronfel, Asyut, Egypt"
+    },
+    {
+      "supplier_name": "TrustCare Supplies",
+      "products_provided": 4,
+      "contact_name": "Rania Ibrahim",
+      "contact_email": "rania.ibrahim@trustcaresupplies.com",
+      "contact_phone": "+20-113-652-4295",
+      "address": "136 Tharwat St, Talkha, Mansoura, Egypt"
+    },
+    {
+      "supplier_name": "LifeLine Pharma",
+      "products_provided": 5,
+      "contact_name": "Doaa Hamdy",
+      "contact_email": "doaa.hamdy@lifelinepharma.com",
+      "contact_phone": "+20-117-629-8397",
+      "address": "172 El-Geish Rd, El-Tagneed, Ismailia, Egypt"
+    },
+    {
+      "supplier_name": "Green Crescent Med",
+      "products_provided": 4,
+      "contact_name": "Mona Hussein",
+      "contact_email": "mona.hussein@greencrescentmed.com",
+      "contact_phone": "+20-109-667-4770",
+      "address": "17 Al-Nozha St, Smouha, Alexandria, Egypt"
+    },
+    {
+      "supplier_name": "PharmaLife",
+      "products_provided": 5,
+      "contact_name": "Walid Hussein",
+      "contact_email": "walid.hussein@pharmalife.com",
+      "contact_phone": "+20-120-334-2104",
+      "address": "19 Abdel Salam Aref St, Nasr City, Cairo, Egypt"
+    },
+    {
+      "supplier_name": "NutriHealth",
+      "products_provided": 6,
+      "contact_name": "Hany Mahmoud",
+      "contact_email": "hany.mahmoud@nutrihealth.com",
+      "contact_phone": "+20-104-785-8953",
+      "address": "19 Ahmed Orabi St, El Mahatta, Tanta, Egypt"
+    },
+    {
+      "supplier_name": "MedBridge Egypt",
+      "products_provided": 11,
+      "contact_name": "Nour Sabry",
+      "contact_email": "nour.sabry@medbridgeegypt.com",
+      "contact_phone": "+20-127-348-8749",
+      "address": "186 Tharwat St, Dokki, Giza, Egypt"
+    },
+    {
+      "supplier_name": "MediServe Egypt",
+      "products_provided": 6,
+      "contact_name": "Nadia ElDin",
+      "contact_email": "nadia.eldin@mediserveegypt.com",
+      "contact_phone": "+20-126-462-7939",
+      "address": "25 Tahrir St, Sidi Gaber, Alexandria, Egypt"
+    },
+    {
+      "supplier_name": "Nile Medics",
+      "products_provided": 3,
+      "contact_name": "Karim Badawy",
+      "contact_email": "karim.badawy@nilemedics.com",
+      "contact_phone": "+20-121-162-7596",
+      "address": "173 El-Geish Rd, Heliopolis, Cairo, Egypt"
+    }
+  ]
+}
