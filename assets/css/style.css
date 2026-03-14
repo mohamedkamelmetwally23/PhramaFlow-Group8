@@ -32,4 +32,18 @@
 
   --border-light: #e5e7eb;
   --border-dark: #d1d5db;
+  /* main page Title and section Titles */
+  --font-weight-1: 600;
+  /* side bar items , button labels, status tags  */
+  --font-weight-2: 500;
+  /* table data  placeholder text*/
+  --font-weight-3: 400;
+  /* font sizes */
+  --font-Size-1: 28px;
+  --font-Size-1: 24px;
+  --font-Size-1: 16px;
+  --font-Size-1: 14px;
+}
+body {
+  font-family: "Inter", sans-serif;
 }
