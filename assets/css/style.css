@@ -1,7 +1,8 @@
 :root {
   --primary: #1e3a8a;
-  --primary-dark: #0f2b5c;
-  --primary-light: #3b5f9e;
+  --primary-dark: #1c4181;
+  --primary-dark-hover: #0f2b5c;
+  --primary-light: #b4c7e9;
 
   --bg-light: #f3f4f6;
   --bg-white: #ffffff;
@@ -45,28 +46,115 @@
   --font-Size-1: 28px;
   --font-Size-1: 24px;
   --font-Size-1: 16px;
-  --font-Size-1: 14px;
+  --font-14: 14px;
+  --font-12: 12px;
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
+}
+.text-primary {
+  color: var(--primary) !important;
+}
+
+.main-btn {
+  color: var(--text-white) !important;
+  background-color: var(--primary-dark);
+  padding-inline: 22px;
+  padding-block: 8px;
+  font-weight: 500;
+  border-radius: 6px;
+}
+.main-btn:hover {
+  background-color: var(--primary-dark-hover);
+}
+
+.bg-primary-light {
+  background-color: var(--primary-light);
+}
+
+.bg-gray {
+  font-size: var(--font-12);
+  padding: 2px 10px;
+  color: var(--text-primary);
+  background-color: var(--gray-300);
+}
+
+.fs-12 {
+  font-size: var(--font-12);
+}
+.fs-14 {
+  font-size: var(--font-14);
+}
+
+.border-gray-200 {
+  border-color: var(--gray-200) !important;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.card:hover {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.btn-outline-custom {
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+  color: #475569;
+}
+.btn-outline-custom:hover {
+  background-color: #e2e8f0;
+}
+.btn-outline-danger-custom {
+  background-color: #fffbfb;
+  border-color: #fee2e2;
+  color: #ef4444;
+}
+.btn-outline-danger-custom:hover {
+  background-color: #fee2e2;
+  color: #ef4444;
 }
 
 .main-bg {
   background-color: var(--primary);
 }
 
+.user-img {
+  padding: 10px;
+}
+.dark .user-img {
+  background-color: var(--info) !important;
+}
+.dark .user-role {
+  color: var(--gray-200) !important;
+}
+
 aside {
+  width: 20% !important;
   height: 100vh;
   background-color: var(--primary) !important;
 }
 
 .aside-hover {
-  padding: 10px 15px;
   border-radius: 6px;
   transition: 0.3s;
 }
 
 .aside-hover:hover {
-  background-color: var(--text-secondary) !important;
+  background-color: var(--primary-dark-hover) !important;
+}
+
+.sidebar-nav:hover,
+.sidebar-nav-active {
+  background-color: var(--primary-dark-hover) !important;
+  transition: background-color 0.3s ease-in-out;
+}
+
+main {
+  width: 80% !important;
+  background-color: var(--bg-light);
 }
