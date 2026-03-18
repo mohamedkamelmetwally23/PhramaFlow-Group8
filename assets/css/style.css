@@ -51,7 +51,7 @@
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 .text-primary {
   color: var(--primary) !important;
@@ -161,4 +161,8 @@ main {
 
 .search {
   background-color: var(--bg-light);
+}
+
+.main-btn:disabled {
+  background-color: #0f2b5c;
 }
