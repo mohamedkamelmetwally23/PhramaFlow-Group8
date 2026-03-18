@@ -116,14 +116,13 @@ body {
 
 .modal .btn-outline-danger-custom:hover,
 .btn-outline-danger-custom {
-  background-color: #fffbfb;
-  border-color: #fee2e2;
+  background-color: #f7e7e7;
   color: #ef4444;
 }
 
 .modal .btn-outline-danger-custom,
 .btn-outline-danger-custom:hover {
-  background-color: #fee2e2;
+  background-color: #fdd2d2;
   color: #ef4444;
 }
 

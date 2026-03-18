@@ -3,13 +3,13 @@ function renderTablePage(
   actions,
   page = 1,
   rowsPerPage = 10,
-  tableName = "items",
+  tableName = 'items',
 ) {
-  const tableHead = document.getElementById("tableHead");
-  const tableBody = document.getElementById("tableBody");
+  const tableHead = document.getElementById('tableHead');
+  const tableBody = document.getElementById('tableBody');
 
-  tableHead.innerHTML = "";
-  tableBody.innerHTML = "";
+  tableHead.innerHTML = '';
+  tableBody.innerHTML = '';
 
   if (!data.length) return;
 
@@ -17,14 +17,15 @@ function renderTablePage(
 
   // headers
   columns.forEach((col) => {
-    const th = document.createElement("th");
-    th.textContent = col;
+    const th = document.createElement('th');
+    th.classList.add('text-capitalize');
+    th.textContent = col.split('_').join(' ');
     tableHead.appendChild(th);
   });
 
   // actions header
-  const actionTh = document.createElement("th");
-  actionTh.textContent = "Actions";
+  const actionTh = document.createElement('th');
+  actionTh.textContent = 'Actions';
   tableHead.appendChild(actionTh);
 
   // rows for current page
@@ -33,28 +34,27 @@ function renderTablePage(
   const pageData = data.slice(startIdx, endIdx);
 
   pageData.forEach((item) => {
-    const tr = document.createElement("tr");
+    const tr = document.createElement('tr');
     tr.dataset.index = data.indexOf(item);
 
     columns.forEach((col) => {
-      const td = document.createElement("td");
+      const td = document.createElement('td');
       td.textContent = item[col];
       tr.appendChild(td);
     });
 
-    const actionTd = document.createElement("td");
+    const actionTd = document.createElement('td');
 
-    const editBtn = document.createElement("button");
-    editBtn.className = "btn btn-sm edit-btn";
+    const editBtn = document.createElement('button');
+    editBtn.className = 'btn btn-sm edit-btn';
     editBtn.innerHTML = `<i class="fa-solid fa-pen-to-square edit-icon"></i>`;
 
-    const deleteBtn = document.createElement("button");
-    deleteBtn.className = "btn btn-sm delete-btn border-0";
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'btn btn-sm delete-btn border-0';
     deleteBtn.innerHTML = `<i class="fa-solid fa-trash delete-icon"></i>`;
 
-    
     if (item.ProductsSupplied === 0) {
-      deleteBtn.classList.add("disabled");
+      deleteBtn.classList.add('disabled');
     }
 
     actionTd.appendChild(editBtn);
@@ -66,13 +66,14 @@ function renderTablePage(
   });
 
   // update info
-  document.getElementById("tableInfo").textContent =
+  document.getElementById('tableInfo').textContent =
     `Showing ${startIdx + 1} to ${endIdx} of ${data.length} ${tableName}`;
 
   // update page number
-  document.getElementById("pageNumber").textContent = page;
+  document.getElementById('pageNumber').textContent = page;
 
   // disable/enable buttons
-  document.getElementById("prevBtn").disabled = page === 1;
-  document.getElementById("nextBtn").disabled = page === Math.ceil(data.length / rowsPerPage);
+  document.getElementById('prevBtn').disabled = page === 1;
+  document.getElementById('nextBtn').disabled =
+    page === Math.ceil(data.length / rowsPerPage);
 }

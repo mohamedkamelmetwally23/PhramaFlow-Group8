@@ -63,7 +63,7 @@ export const createCategory = async (data) => {
 // Update category by id
 export const updateCategory = async (id, updatedData) => {
   return await apiRequest(`categories/${id}`, {
-    method: 'PUT',
+    method: 'PATCH',
     headers: { 'Content-type': 'application/json' },
     body: JSON.stringify(updatedData),
   });

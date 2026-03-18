@@ -12,8 +12,6 @@ export const getSupplierById = async (id) => apiRequest(`suppliers/${id}`);
 
 //--------------------------------------------
 // Get suppliers with product Supplied
-
-// ( ..................... loading ..........................)
 export const getSuppliersWithProductSupplied = async () => {
   const [suppliersRes, productsRes] = await Promise.all([
     apiRequest('suppliers'),
@@ -23,17 +21,16 @@ export const getSuppliersWithProductSupplied = async () => {
   const suppliers = suppliersRes.data;
   const products = productsRes.data;
 
-  suppliers.map((supplier) => {
-    const productSupplied = products.filter(
-      (pro) => pro.supplierId == supplier.id,
+  const suppliersWithProductSupplied = suppliers.map((supplier) => {
+    const product_supplied = products.filter(
+      (pro) => pro.supplier_id == supplier.id,
     ).length;
 
-    return { ...supplier, productSupplied };
+    return { ...supplier, product_supplied };
   });
 
-  return { success: true, data: suppliers };
+  return { success: true, data: suppliersWithProductSupplied };
 };
-// ( ..................... loading ..........................)
 
 //----------------------------------------------
 // Create suppliers
@@ -49,15 +46,13 @@ export const createSupplier = async (data) => {
     address: data.address,
   });
 
-  const supplier = await apiRequest('suppliers', {
+  return await apiRequest('suppliers', {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
     },
     body: JSON.stringify(newSupplier),
   });
-
-  return { success: true, data: supplier };
 };
 
 //----------------------------------------------
@@ -72,15 +67,13 @@ export const updataSupplier = async (supplierId, data) => {
     address: data.address,
   });
 
-  const supplier = await apiRequest(`suppliers/${supplierId}`, {
+  return await apiRequest(`suppliers/${supplierId}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json',
     },
     body: JSON.stringify(updatedSupplier),
   });
-
-  return { success: true, data: supplier };
 };
 
 // ---------------------------------------------

@@ -52,7 +52,7 @@ const displayCategory = (category) => {
                 <i class="fa-regular fa-pen-to-square me-2"></i> Edit
               </button>
               <button
-                class="btn btn-outline-danger-custom w-50 rounded-3 py-2 fw-medium"
+                class="btn btn-outline-danger-custom w-50 rounded-3 py-2 fw-medium border-0"
                 data-bs-toggle="modal"
                 data-bs-target="#deleteCategoryModal"
                 data-action="delete"

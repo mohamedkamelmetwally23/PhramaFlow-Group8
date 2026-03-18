@@ -1,9 +1,9 @@
 import {
   createSupplier,
   deleteSupplier,
-  getSuppliers,
+  getSuppliersWithProductSupplied,
   updataSupplier,
-} from "../api/suppliersApi.js";
+} from '../api/suppliersApi.js';
 
 // =======================
 // Variables
@@ -17,7 +17,7 @@ const rowsPerPage = 10;
 // =======================
 // Load Data
 const loadSuppliers = async () => {
-  const res = await getSuppliers();
+  const res = await getSuppliersWithProductSupplied();
 
   if (!res || !res.data) return;
 
@@ -30,7 +30,7 @@ const loadSuppliers = async () => {
     actionsHTML(),
     currentPage,
     rowsPerPage,
-    "suppliers"
+    'suppliers',
   );
 };
 
@@ -52,13 +52,13 @@ function actionsHTML() {
 // =======================
 // Caption
 function updateCaption() {
-  document.getElementById("tableCaption").innerHTML =
+  document.getElementById('tableCaption').innerHTML =
     `<i class="fa-solid fa-users"></i> All Suppliers (${suppliers.length})`;
 }
 
 // =======================
 // Pagination
-document.getElementById("prevBtn").addEventListener("click", () => {
+document.getElementById('prevBtn').addEventListener('click', () => {
   if (currentPage > 1) {
     currentPage--;
 
@@ -67,12 +67,12 @@ document.getElementById("prevBtn").addEventListener("click", () => {
       actionsHTML(),
       currentPage,
       rowsPerPage,
-      "suppliers"
+      'suppliers',
     );
   }
 });
 
-document.getElementById("nextBtn").addEventListener("click", () => {
+document.getElementById('nextBtn').addEventListener('click', () => {
   if (currentPage < Math.ceil(suppliers.length / rowsPerPage)) {
     currentPage++;
 
@@ -81,133 +81,110 @@ document.getElementById("nextBtn").addEventListener("click", () => {
       actionsHTML(),
       currentPage,
       rowsPerPage,
-      "suppliers"
+      'suppliers',
     );
   }
 });
 
 // =======================
 // ADD
-document.getElementById("addSupplier").addEventListener("click", () => {
+document.getElementById('addSupplier').addEventListener('click', () => {
   editIndex = null;
 
-  document.getElementById("supplierForm").reset();
+  document.getElementById('supplierForm').reset();
 
-  const modal = new bootstrap.Modal(
-    document.getElementById("supplierModal")
-  );
+  const modal = new bootstrap.Modal(document.getElementById('supplierModal'));
 
   modal.show();
 });
 
 // =======================
 // SAVE (ADD + EDIT)
-document
-  .getElementById("saveSupplier")
-  .addEventListener("click", async (e) => {
-    e.preventDefault();
+document.getElementById('saveSupplier').addEventListener('click', async (e) => {
+  e.preventDefault();
 
-    const supplierName = document.getElementById("name").value.trim();
-    const contactPerson = document
-      .getElementById("contactPerson")
-      .value.trim();
-    const email = document.getElementById("email").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const address = document.getElementById("address").value.trim();
+  const supplierName = document.getElementById('name').value.trim();
+  const contactPerson = document.getElementById('contactPerson').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const address = document.getElementById('address').value.trim();
 
-    if (!supplierName || !contactPerson || !email || !phone || !address) {
-      alert("Please fill all fields");
-      return;
-    }
+  if (!supplierName || !contactPerson || !email || !phone || !address) {
+    alert('Please fill all fields');
+    return;
+  }
 
-    const data = {
-      supplier_name: supplierName,
-      contact_name: contactPerson,
-      contact_email: email,
-      contact_phone: phone,
-      address: address,
-    };
+  const data = {
+    supplier_name: supplierName,
+    contact_name: contactPerson,
+    contact_email: email,
+    contact_phone: phone,
+    address: address,
+  };
 
-    if (editIndex === null) {
-      // ADD
-      await createSupplier(data);
-    } else {
-      // EDIT
-      const id = suppliers[editIndex].id;
-      await updataSupplier(id, data);
-    }
+  if (editIndex === null) {
+    // ADD
+    await createSupplier(data);
+  } else {
+    // EDIT
+    const id = suppliers[editIndex].id;
+    await updataSupplier(id, data);
+  }
 
-    await loadSuppliers();
+  await loadSuppliers();
 
-    bootstrap.Modal.getInstance(
-      document.getElementById("supplierModal")
-    ).hide();
-  });
+  bootstrap.Modal.getInstance(document.getElementById('supplierModal')).hide();
+});
 
 // =======================
 // TABLE EVENTS (EDIT + DELETE)
-document
-  .getElementById("tableBody")
-  .addEventListener("click", function (e) {
-    const row = e.target.closest("tr");
-    if (!row) return;
+document.getElementById('tableBody').addEventListener('click', function (e) {
+  const row = e.target.closest('tr');
+  if (!row) return;
 
-    const index = Number(row.dataset.index);
+  const index = Number(row.dataset.index);
 
-    // EDIT
-    const editBtn = e.target.closest(".edit-btn");
-    if (editBtn) {
-      editIndex = index;
+  // EDIT
+  const editBtn = e.target.closest('.edit-btn');
+  if (editBtn) {
+    editIndex = index;
 
-      const supplier = suppliers[index];
+    const supplier = suppliers[index];
 
-      document.getElementById("name").value =
-        supplier.supplier_name;
-      document.getElementById("contactPerson").value =
-        supplier.contact_name;
-      document.getElementById("phone").value =
-        supplier.contact_phone;
-      document.getElementById("email").value =
-        supplier.contact_email;
-      document.getElementById("address").value =
-        supplier.address;
+    document.getElementById('name').value = supplier.supplier_name;
+    document.getElementById('contactPerson').value = supplier.contact_name;
+    document.getElementById('phone').value = supplier.contact_phone;
+    document.getElementById('email').value = supplier.contact_email;
+    document.getElementById('address').value = supplier.address;
 
-      const modal = new bootstrap.Modal(
-        document.getElementById("supplierModal")
-      );
+    const modal = new bootstrap.Modal(document.getElementById('supplierModal'));
 
-      modal.show();
-    }
+    modal.show();
+  }
 
-    // DELETE
-    const deleteBtn = e.target.closest(".delete-btn");
-    if (deleteBtn) {
-      deleteIndex = index;
+  // DELETE
+  const deleteBtn = e.target.closest('.delete-btn');
+  if (deleteBtn) {
+    deleteIndex = index;
 
-      const modal = new bootstrap.Modal(
-        document.getElementById("deleteModal")
-      );
+    const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
 
-      modal.show();
-    }
-  });
+    modal.show();
+  }
+});
 
 // =======================
 // CONFIRM DELETE
-document
-  .getElementById("confirmDelete")
-  .addEventListener("click", async () => {
-    if (deleteIndex === null) return;
+document.getElementById('confirmDelete').addEventListener('click', async () => {
+  if (deleteIndex === null) return;
 
-    const id = suppliers[deleteIndex].id;
+  const id = suppliers[deleteIndex].id;
 
-    await deleteSupplier(id);
+  await deleteSupplier(id);
 
-    await loadSuppliers();
+  await loadSuppliers();
 
-    deleteIndex = null;
+  deleteIndex = null;
 
-    bootstrap.Modal.getInstance(
-      document.getElementById("deleteModal")
-    ).hide();
-  });
+  bootstrap.Modal.getInstance(document.getElementById('deleteModal')).hide();
+});
