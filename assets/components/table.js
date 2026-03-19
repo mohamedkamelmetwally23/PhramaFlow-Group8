@@ -52,7 +52,6 @@ function renderTablePage(
     deleteBtn.className = "btn btn-sm delete-btn border-0";
     deleteBtn.innerHTML = `<i class="fa-solid fa-trash delete-icon"></i>`;
 
-    
     if (item.ProductsSupplied === 0) {
       deleteBtn.classList.add("disabled");
     }
@@ -74,5 +73,6 @@ function renderTablePage(
 
   // disable/enable buttons
   document.getElementById("prevBtn").disabled = page === 1;
-  document.getElementById("nextBtn").disabled = page === Math.ceil(data.length / rowsPerPage);
+  document.getElementById("nextBtn").disabled =
+    page === Math.ceil(data.length / rowsPerPage);
 }
