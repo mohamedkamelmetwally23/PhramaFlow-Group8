@@ -5,15 +5,19 @@ import {
   createStockAdjustments,
   updateStock,
   deleteStock,
-} from "../api/stockAdjustmentsApi.js";
+} from '../api/stockAdjustmentsApi.js';
+import loadLayout from '../ui/layout.js';
 
 // ===================== CARDS =====================
-const totalAdjustments = document.querySelector("#totalAdjustments");
-const totalCorrection = document.querySelector("#totalCorrection");
-const totalinItial_stock = document.querySelector("#totalinItial_stock");
-const totalStock_in = document.querySelector("#totalStock_in");
-const totalStock_out = document.querySelector("#totalStock_out");
-const totslExpiry_writeoff = document.querySelector("#totslExpiry_writeoff");
+const totalAdjustments = document.querySelector('#totalAdjustments');
+const totalCorrection = document.querySelector('#totalCorrection');
+const totalinItial_stock = document.querySelector('#totalinItial_stock');
+const totalStock_in = document.querySelector('#totalStock_in');
+const totalStock_out = document.querySelector('#totalStock_out');
+const totslExpiry_writeoff = document.querySelector('#totslExpiry_writeoff');
+
+//
+loadLayout('Stock Adjustments');
 
 // Calculate stats
 const displayCalc = (stocks) => {
@@ -24,15 +28,15 @@ const displayCalc = (stocks) => {
   let totalInitialStockVal = 0;
 
   stocks.forEach((stock) => {
-    if (stock.type === "correction") {
+    if (stock.type === 'correction') {
       totalCorrectionVal += Number(stock.quantity);
-    } else if (stock.type === "initial_stock") {
+    } else if (stock.type === 'initial_stock') {
       totalInitialStockVal += Number(stock.quantity);
-    } else if (stock.type === "stock_in") {
+    } else if (stock.type === 'stock_in') {
       totalStockInVal += Number(stock.quantity);
-    } else if (stock.type === "stock_out") {
+    } else if (stock.type === 'stock_out') {
       totalStockOutVal += Number(stock.quantity);
-    } else if (stock.type === "expiry_writeoff") {
+    } else if (stock.type === 'expiry_writeoff') {
       totalExpiryWriteoffVal += Number(stock.quantity);
     }
   });
@@ -58,7 +62,7 @@ const renderCards = (stats) => {
 };
 
 // ===================== TABLE =====================
-const tableBody = document.querySelector(".table-body");
+const tableBody = document.querySelector('.table-body');
 
 // Add one stock
 const displayStockAdjustments = (stock) => {
@@ -83,12 +87,12 @@ const displayStockAdjustments = (stock) => {
     </tr>
   `;
 
-  tableBody.insertAdjacentHTML("beforeend", markup);
+  tableBody.insertAdjacentHTML('beforeend', markup);
 };
 
 // Display all stocks
 const renderStock = (stocks) => {
-  tableBody.innerHTML = "";
+  tableBody.innerHTML = '';
 
   if (!stocks || stocks.length === 0) {
     tableBody.innerHTML = `

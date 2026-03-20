@@ -1,3 +1,3 @@
-import showNotification from '../utils/notification.js';
+import loadLayout from '../ui/layout.js';
 
-showNotification('success', 'Hello');
+loadLayout('Reports');
