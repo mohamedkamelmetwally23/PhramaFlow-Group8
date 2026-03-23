@@ -1,8 +1,13 @@
-import { getSuppliers } from "../api/suppliersApi.js";
-import { generateModal } from "../components/FormRender.js";
-let currentPage = 1;
-const rowsPerPage = 10;
+import {
+  createSupplier,
+  deleteSupplier,
+  getSuppliersWithProductSupplied,
+  updataSupplier,
+} from "../api/suppliersApi.js";
 
+import { generateModal } from "../components/FormRender.js";
+// =======================
+// Variables
 let suppliers = [];
 let editIndex = null;
 let deleteIndex = null;
@@ -12,6 +17,17 @@ getSuppliers().then((data) => {
   suppliers = data.data;
 
   if (!suppliers.length) return;
+let currentPage = 1;
+const rowsPerPage = 10;
+
+// =======================
+// Load Data
+const loadSuppliers = async () => {
+  const res = await getSuppliersWithProductSupplied();
+
+  if (!res || !res.data) return;
+
+  suppliers = res.data;
 
   updateCaption();
 
@@ -24,25 +40,28 @@ getSuppliers().then((data) => {
   );
 });
 
-// actions buttons
+// =======================
+// Actions Buttons
 function actionsHTML() {
   return `
-        <button class="btn btn-sm edit-btn">
-            <i class="fa-solid fa-pen-to-square edit-icon"></i>
-        </button>
-        <button class="btn btn-sm delete-btn">
-            <i class="fa-solid fa-trash delete-icon"></i>
-        </button>
-    `;
+    <button class="btn btn-sm edit-btn"> 
+      <i class="fa-solid fa-pen-to-square edit-icon"></i> 
+    </button> 
+    <button class="btn btn-sm delete-btn"> 
+      <i class="fa-solid fa-trash delete-icon"></i> 
+    </button> 
+  `;
 }
 
-// caption
+// =======================
+// Caption
 function updateCaption() {
   document.getElementById("tableCaption").innerHTML =
     `<i class="fa-solid fa-users"></i> All Suppliers (${suppliers.length})`;
 }
 
-// pagination
+// =======================
+// Pagination
 document.getElementById("prevBtn").addEventListener("click", () => {
   if (currentPage > 1) {
     currentPage--;
@@ -71,74 +90,64 @@ document.getElementById("nextBtn").addEventListener("click", () => {
   }
 });
 
+// =======================
 // ADD
-document.getElementById("addSupplier").addEventListener("click", async () => {
+document.getElementById('addSupplier').addEventListener('click', () => {
   editIndex = null;
   let saveButton = await generateModal("Supplier", "suppliers");
   saveButton.addEventListener("click", (e) => {
     e.preventDefault();
 
-    const supplierName = document.getElementById("name").value.trim();
-    const contactPerson = document.getElementById("contactPerson").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const address = document.getElementById("address").value.trim();
-    //   const productsSupplied = Number(document.getElementById("productsSupplied").value.trim());
+  const supplierName = document.getElementById("name").value.trim();
+  const contactPerson = document.getElementById("contactPerson").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const address = document.getElementById("address").value.trim();
+  //   const productsSupplied = Number(document.getElementById("productsSupplied").value.trim());
 
-    if (!supplierName || !contactPerson || !phone || !email || !address) {
-      alert("Please fill all fields");
-      return;
-    }
+  if (!supplierName || !contactPerson || !phone || !email || !address) {
+    alert("Please fill all fields");
+    return;
+  }
 
-    if (editIndex === null) {
-      const newSupplier = {
-        id: Date.now(),
-        SupplierName: supplierName,
-        ContactPerson: contactPerson,
-        Phone: phone,
-        Email: email,
-        Address: address,
-        // ProductsSupplied: productsSupplied,
-      };
+  if (editIndex === null) {
+    const newSupplier = {
+      id: Date.now(),
+      SupplierName: supplierName,
+      ContactPerson: contactPerson,
+      Phone: phone,
+      Email: email,
+      Address: address,
+      // ProductsSupplied: productsSupplied,
+    };
 
-      suppliers.push(newSupplier);
-    } else {
-      suppliers[editIndex]["supplier_name"] = supplierName;
-      suppliers[editIndex]["contact_name"] = contactPerson;
-      suppliers[editIndex]["contact_phone"] = phone;
-      suppliers[editIndex]["contact_email"] = email;
-      suppliers[editIndex]["address"] = address;
-      // suppliers[editIndex]["ProductsSupplied"] = productsSupplied;
-    }
+    suppliers.push(newSupplier);
+  } else {
+    suppliers[editIndex]["supplier_name"] = supplierName;
+    suppliers[editIndex]["contact_name"] = contactPerson;
+    suppliers[editIndex]["contact_phone"] = phone;
+    suppliers[editIndex]["contact_email"] = email;
+    suppliers[editIndex]["address"] = address;
+    // suppliers[editIndex]["ProductsSupplied"] = productsSupplied;
+  }
 
-    updateCaption();
+  updateCaption();
 
-    renderTablePage(
-      suppliers,
-      actionsHTML(),
-      currentPage,
-      rowsPerPage,
-      "suppliers",
-    );
+  renderTablePage(
+    suppliers,
+    actionsHTML(),
+    currentPage,
+    rowsPerPage,
+    "suppliers",
+  );
 
-    bootstrap.Modal.getInstance(
-      document.getElementById("supplierModal"),
-    ).hide();
-  });
-  // document.getElementById("supplierForm").reset();
-
-  // const modal = new bootstrap.Modal(document.getElementById("supplierModal"));
-
-  // modal.show();
+  bootstrap.Modal.getInstance(document.getElementById('supplierModal')).hide();
 });
 
-// SAVE (ADD / EDIT)
-
+// =======================
 // TABLE EVENTS (EDIT + DELETE)
-
 document.getElementById("tableBody").addEventListener("click", function (e) {
   const row = e.target.closest("tr");
-
   if (!row) return;
 
   const index = Number(row.dataset.index);
@@ -150,12 +159,11 @@ document.getElementById("tableBody").addEventListener("click", function (e) {
 
     const supplier = suppliers[index];
 
-    document.getElementById("name").value = supplier.SupplierName;
-    document.getElementById("contactPerson").value = supplier.ContactPerson;
-    document.getElementById("phone").value = supplier.Phone;
-    document.getElementById("email").value = supplier.Email;
-    document.getElementById("address").value = supplier.Address;
-    // document.getElementById("productsSupplied").value = supplier.ProductsSupplied;
+    document.getElementById("name").value = supplier.supplier_name;
+    document.getElementById("contactPerson").value = supplier.contact_name;
+    document.getElementById("phone").value = supplier.contact_phone;
+    document.getElementById("email").value = supplier.contact_email;
+    document.getElementById("address").value = supplier.address;
 
     const modal = new bootstrap.Modal(document.getElementById("supplierModal"));
 
@@ -164,7 +172,7 @@ document.getElementById("tableBody").addEventListener("click", function (e) {
 
   // DELETE
   const deleteBtn = e.target.closest(".delete-btn");
-  if (deleteBtn && !deleteBtn.classList.contains("disabled")) {
+  if (deleteBtn) {
     deleteIndex = index;
 
     const modal = new bootstrap.Modal(document.getElementById("deleteModal"));
@@ -173,27 +181,18 @@ document.getElementById("tableBody").addEventListener("click", function (e) {
   }
 });
 
+// =======================
 // CONFIRM DELETE
+document.getElementById("confirmDelete").addEventListener("click", async () => {
+  if (deleteIndex === null) return;
 
-document.getElementById("confirmDelete").addEventListener("click", () => {
-  suppliers.splice(deleteIndex, 1);
+  const id = suppliers[deleteIndex].id;
 
-  updateCaption();
+  await deleteSupplier(id);
 
-  // fix pagination
-  const totalPages = Math.ceil(suppliers.length / rowsPerPage);
+  await loadSuppliers();
 
-  if (currentPage > totalPages) {
-    currentPage = totalPages;
-  }
-
-  renderTablePage(
-    suppliers,
-    actionsHTML(),
-    currentPage,
-    rowsPerPage,
-    "suppliers",
-  );
+  deleteIndex = null;
 
   bootstrap.Modal.getInstance(document.getElementById("deleteModal")).hide();
 });
