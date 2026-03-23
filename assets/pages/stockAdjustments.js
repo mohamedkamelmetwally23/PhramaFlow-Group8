@@ -3,8 +3,19 @@ import {
   createStockAdjustments,
   updateStock,
   deleteStock,
-} from "../api/stockAdjustmentsApi.js";
+} from '../api/stockAdjustmentsApi.js';
+import loadLayout from '../ui/layout.js';
 
+// ===================== CARDS =====================
+const totalAdjustments = document.querySelector('#totalAdjustments');
+const totalCorrection = document.querySelector('#totalCorrection');
+const totalinItial_stock = document.querySelector('#totalinItial_stock');
+const totalStock_in = document.querySelector('#totalStock_in');
+const totalStock_out = document.querySelector('#totalStock_out');
+const totslExpiry_writeoff = document.querySelector('#totslExpiry_writeoff');
+
+//
+loadLayout('Stock Adjustments');
 import { getProductNames } from "../api/productsApi.js";
 
 // ===================== ELEMENTS =====================
@@ -51,6 +62,16 @@ const displayCalc = (stocks) => {
   let totalInitialStockVal = 0;
 
   stocks.forEach((stock) => {
+    if (stock.type === 'correction') {
+      totalCorrectionVal += Number(stock.quantity);
+    } else if (stock.type === 'initial_stock') {
+      totalInitialStockVal += Number(stock.quantity);
+    } else if (stock.type === 'stock_in') {
+      totalStockInVal += Number(stock.quantity);
+    } else if (stock.type === 'stock_out') {
+      totalStockOutVal += Number(stock.quantity);
+    } else if (stock.type === 'expiry_writeoff') {
+      totalExpiryWriteoffVal += Number(stock.quantity);
     switch (stock.type) {
       case "correction":
         totalCorrectionVal += Number(stock.quantity);
@@ -91,6 +112,9 @@ const renderCards = (stats) => {
 };
 
 // ===================== TABLE =====================
+const tableBody = document.querySelector('.table-body');
+
+// Add one stock
 const displayStockAdjustments = (stock) => {
   const markup = `
   <tr>
@@ -134,7 +158,7 @@ const displayStockAdjustments = (stock) => {
   </tr>
 `;
 
-  tableBody.insertAdjacentHTML("beforeend", markup);
+  tableBody.insertAdjacentHTML('beforeend', markup);
 };
 
 const renderStock = (stocks) => {

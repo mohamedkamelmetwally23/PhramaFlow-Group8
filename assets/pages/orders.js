@@ -1,6 +1,11 @@
+import loadLayout from '../ui/layout.js';
 import { generateModal, getFormData } from "../components/FormRender.js";
 import { editStatus, getData, getPurchaseOrders } from "../api/ordersApi.js";
+
 let createOrder = document.getElementsByClassName("create-order")[0];
+
+loadLayout('purchase-order');
+
 createOrder.addEventListener("click", async function () {
   let saveButton = await generateModal("Orders", "purchase_order");
   saveButton.addEventListener("click", function () {
