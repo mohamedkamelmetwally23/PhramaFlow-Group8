@@ -1,12 +1,16 @@
-import { generateModal, getFormData } from "../components/FormRender.js";
+import { generateModal } from "../components/FormRender.js";
 import { editStatus, getData, getPurchaseOrders } from "../api/ordersApi.js";
+import { Order } from "../models/Order.js";
+
+//=======================
+//create new order...
 let createOrder = document.getElementsByClassName("create-order")[0];
 createOrder.addEventListener("click", async function () {
   let saveButton = await generateModal("Orders", "purchase_order");
-  saveButton.addEventListener("click", function () {
-    getFormData();
-  });
+  saveButton.addEventListener("click", function () {});
 });
+
+//=========================
 //rendering Table function
 let currentPage = 1;
 const rowsPerPage = 10;
@@ -20,7 +24,8 @@ getPurchaseOrders().then((data) => {
   ChangeStatus();
   updateCards(orders);
 });
-
+//==========
+//actions...
 function actionsHTML() {
   return `
         <button class="btn btn-sm edit-btn">
@@ -31,12 +36,13 @@ function actionsHTML() {
         </button>
     `;
 }
+//Table captions...
 function updateCaption() {
   document.getElementById("tableCaption").innerHTML =
     ` <i class="fa-solid fa-cart-shopping"></i> Purchase Orders (${orders.length})`;
 }
 
-//set status Style
+//set status Style...
 function setStatusStyle() {
   let rows = document.getElementsByTagName("tr");
   for (let i = 0; i < rows.length; i++) {
@@ -56,7 +62,7 @@ function setStatusStyle() {
     }
   }
 }
-
+//change status...
 function ChangeStatus() {
   let showOrder = document.getElementsByClassName("edit-btn");
   for (let i = 0; i < showOrder.length; i++) {
@@ -102,26 +108,22 @@ nextButton.addEventListener("click", () => {
 let addOrder = document.getElementsByClassName("create-order")[0];
 addOrder.addEventListener("click", function () {});
 
+//update cards values...
 function updateCards(orders) {
   let totalOrders = document.getElementsByClassName("total-order")[0];
   let recieved = document.getElementsByClassName("recieved")[0];
   let pending = document.getElementsByClassName("pending")[0];
-  let approved = document.getElementsByClassName("approved")[0];
   let ordersCount = orders.length;
-  let recievedcount = 0,
-    pendingcount = 0,
-    approvedcount = 0;
+  let recievedcount = 0;
+  let pendingcount = 0;
   orders.forEach((elm) => {
     if (elm.status == "Pending") {
       pendingcount += 1;
     } else if (elm.status == "Received") {
       recievedcount += 1;
-    } else if (elm.status == "Approved") {
-      approvedcount += 1;
     }
   });
   totalOrders.textContent = ordersCount;
   recieved.textContent = recievedcount;
   pending.textContent = pendingcount;
-  approved.textContent = approvedcount;
 }

@@ -56,7 +56,6 @@ export async function generateModal(headername, dataType) {
   closeButton.setAttribute("aria-label", "Close");
 
   let modal_body = await generateModalBody(dataType);
-  console.log(typeof modal_body);
   let save = document.createElement("button");
   save.setAttribute("type", "button");
   save.setAttribute("class", `btn btn-primary main-bg `);
@@ -129,16 +128,12 @@ export async function form_text_Input(dataArray) {
 
     let input;
     if (key == "Description") {
-      console.log(key, "textarea");
       input = input_type("textarea");
     } else if (key == "Supplier" || key == "Category") {
-      console.log(key, "selection");
       input = await Selection(key);
     } else if (/Date/i.test(key)) {
-      console.log(key, "date");
       input = input_type("date");
     } else if (/Total/i.test(key)) {
-      console.log(key, "total");
       input = input_type("number", key);
     } else {
       input = input_type("text", key);
@@ -179,17 +174,4 @@ async function Selection(key) {
     select.appendChild(option);
   });
   return select;
-}
-
-export function getFormData() {
-  let arrayofInputs = {};
-  if (document.querySelector(".modal-body")) {
-    document
-      .querySelector(".modal-body")
-      .querySelectorAll("input")
-      .forEach((elm) => {
-        arrayofInputs[elm.id] = elm.value;
-      });
-  }
-  console.log(arrayofInputs);
 }

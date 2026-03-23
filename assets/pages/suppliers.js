@@ -1,4 +1,5 @@
 import {
+  getSuppliers,
   createSupplier,
   deleteSupplier,
   getSuppliersWithProductSupplied,
@@ -17,27 +18,28 @@ getSuppliers().then((data) => {
   suppliers = data.data;
 
   if (!suppliers.length) return;
-let currentPage = 1;
-const rowsPerPage = 10;
+  let currentPage = 1;
+  const rowsPerPage = 10;
 
-// =======================
-// Load Data
-const loadSuppliers = async () => {
-  const res = await getSuppliersWithProductSupplied();
+  // =======================
+  // Load Data
+  const loadSuppliers = async () => {
+    const res = await getSuppliersWithProductSupplied();
 
-  if (!res || !res.data) return;
+    if (!res || !res.data) return;
 
-  suppliers = res.data;
+    suppliers = res.data;
 
-  updateCaption();
+    updateCaption();
 
-  renderTablePage(
-    suppliers,
-    actionsHTML(),
-    currentPage,
-    rowsPerPage,
-    "suppliers",
-  );
+    renderTablePage(
+      suppliers,
+      actionsHTML(),
+      currentPage,
+      rowsPerPage,
+      "suppliers",
+    );
+  };
 });
 
 // =======================
@@ -92,58 +94,60 @@ document.getElementById("nextBtn").addEventListener("click", () => {
 
 // =======================
 // ADD
-document.getElementById('addSupplier').addEventListener('click', () => {
+document.getElementById("addSupplier").addEventListener("click", async () => {
   editIndex = null;
   let saveButton = await generateModal("Supplier", "suppliers");
   saveButton.addEventListener("click", (e) => {
     e.preventDefault();
 
-  const supplierName = document.getElementById("name").value.trim();
-  const contactPerson = document.getElementById("contactPerson").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const address = document.getElementById("address").value.trim();
-  //   const productsSupplied = Number(document.getElementById("productsSupplied").value.trim());
+    const supplierName = document.getElementById("name").value.trim();
+    const contactPerson = document.getElementById("contactPerson").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const address = document.getElementById("address").value.trim();
+    //   const productsSupplied = Number(document.getElementById("productsSupplied").value.trim());
 
-  if (!supplierName || !contactPerson || !phone || !email || !address) {
-    alert("Please fill all fields");
-    return;
-  }
+    if (!supplierName || !contactPerson || !phone || !email || !address) {
+      alert("Please fill all fields");
+      return;
+    }
 
-  if (editIndex === null) {
-    const newSupplier = {
-      id: Date.now(),
-      SupplierName: supplierName,
-      ContactPerson: contactPerson,
-      Phone: phone,
-      Email: email,
-      Address: address,
-      // ProductsSupplied: productsSupplied,
-    };
+    if (editIndex === null) {
+      const newSupplier = {
+        id: Date.now(),
+        SupplierName: supplierName,
+        ContactPerson: contactPerson,
+        Phone: phone,
+        Email: email,
+        Address: address,
+        // ProductsSupplied: productsSupplied,
+      };
 
-    suppliers.push(newSupplier);
-  } else {
-    suppliers[editIndex]["supplier_name"] = supplierName;
-    suppliers[editIndex]["contact_name"] = contactPerson;
-    suppliers[editIndex]["contact_phone"] = phone;
-    suppliers[editIndex]["contact_email"] = email;
-    suppliers[editIndex]["address"] = address;
-    // suppliers[editIndex]["ProductsSupplied"] = productsSupplied;
-  }
+      suppliers.push(newSupplier);
+    } else {
+      suppliers[editIndex]["supplier_name"] = supplierName;
+      suppliers[editIndex]["contact_name"] = contactPerson;
+      suppliers[editIndex]["contact_phone"] = phone;
+      suppliers[editIndex]["contact_email"] = email;
+      suppliers[editIndex]["address"] = address;
+      // suppliers[editIndex]["ProductsSupplied"] = productsSupplied;
+    }
 
-  updateCaption();
+    updateCaption();
 
-  renderTablePage(
-    suppliers,
-    actionsHTML(),
-    currentPage,
-    rowsPerPage,
-    "suppliers",
-  );
+    renderTablePage(
+      suppliers,
+      actionsHTML(),
+      currentPage,
+      rowsPerPage,
+      "suppliers",
+    );
 
-  bootstrap.Modal.getInstance(document.getElementById('supplierModal')).hide();
+    bootstrap.Modal.getInstance(
+      document.getElementById("supplierModal"),
+    ).hide();
+  });
 });
-
 // =======================
 // TABLE EVENTS (EDIT + DELETE)
 document.getElementById("tableBody").addEventListener("click", function (e) {
