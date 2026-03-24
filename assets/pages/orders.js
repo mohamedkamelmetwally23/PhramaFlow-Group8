@@ -1,13 +1,16 @@
-import { generateModal } from "../components/FormRender.js";
+import loadLayout from "../ui/layout.js";
+import { generateModal, getFormData } from "../components/FormRender.js";
 import { editStatus, getData, getPurchaseOrders } from "../api/ordersApi.js";
-import { Order } from "../models/Order.js";
 
-//=======================
-//create new order...
 let createOrder = document.getElementsByClassName("create-order")[0];
+
+loadLayout("Purchase Orders");
+
 createOrder.addEventListener("click", async function () {
   let saveButton = await generateModal("Orders", "purchase_order");
-  saveButton.addEventListener("click", function () {});
+  saveButton.addEventListener("click", function () {
+    getFormData();
+  });
 });
 
 //=========================
@@ -69,12 +72,12 @@ function ChangeStatus() {
     showOrder[i].addEventListener("click", async function (e) {
       const row = e.target.closest("tr");
       if (row.children[4].children[0].textContent == "Pending") {
-        row.children[4].children[0].textContent = "Received";
+        row.children[4].children[0].textContent = "Recieved";
         row.children[4].children[0].classList.remove("status-pending");
         row.children[4].children[0].classList.add("status-recieved");
         let rowData = await getData(row.children[0].textContent);
         console.log(rowData);
-        rowData.status = "Received";
+        rowData[status] = "Recieved";
         editStatus(row.children[0].textContent, rowData);
 
         e.target.remove();
