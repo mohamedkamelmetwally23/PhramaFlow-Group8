@@ -6,6 +6,7 @@ import {
   addNewOrder,
   getPurchaseOrders,
 } from "../api/ordersApi.js";
+import { renderTablePage } from "../components/table.js";
 
 let createOrder = document.getElementsByClassName("create-order")[0];
 
@@ -27,7 +28,7 @@ getPurchaseOrders().then((data) => {
   orders = data.data;
   if (!orders.length) return;
   updateCaption();
-  renderTablePage(orders, actionsHTML(), currentPage, rowsPerPage, "Orders");
+  renderTablePage(orders, actionsHTML, currentPage, rowsPerPage, "Orders");
   setStatusStyle();
   ChangeStatus();
   updateCards(orders);
