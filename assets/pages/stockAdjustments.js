@@ -6,6 +6,7 @@ import {
 } from "../api/stockAdjustmentsApi.js";
 
 import { getProductNames } from "../api/productsApi.js";
+import loadLayout from "../ui/layout.js";
 
 // ===================== ELEMENTS =====================
 const productSelect = document.getElementById("productSelect");
@@ -29,8 +30,7 @@ let allStocks = [];
 let currentPage = 1;
 const rowsPerPage = 10;
 
-
-// ===================== LOAD PRODUCTS =====================
+// ===================== LOAD PRODUCTS form Add stock =====================
 const loadProducts = async () => {
   const res = await getProductNames();
 
@@ -267,5 +267,6 @@ modalEl.addEventListener("hidden.bs.modal", () => {
 });
 
 // ===================== START =====================
+loadLayout("Stock Adjustments");
 loadProducts();
 init();
