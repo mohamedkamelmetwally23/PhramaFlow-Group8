@@ -1,5 +1,5 @@
 import loadLayout from "../ui/layout.js";
-import { generateModal, getFormData } from "../components/FormRender.js";
+import { generateModal } from "../components/FormRender.js";
 import { editStatus, getData, getPurchaseOrders } from "../api/ordersApi.js";
 
 let createOrder = document.getElementsByClassName("create-order")[0];
