@@ -143,9 +143,10 @@
                             <select class="form-select py-2 rounded-3" id="productCategory">
                               <option value="" selected disabled>Select Category</option>
                               <option value="CAT-001">Cream</option>
-                              <option value="CAT-002">Eye Drops</option>
-                              <option value="CAT-003">Gel</option>
-                              <option value="CAT-004">Ointment</option>
+                              <option value="CAT-002">Tablets</option>
+                              <option value="CAT-003">Eye Drops</option>
+                              <option value="CAT-004">Gel</option>
+                              <option value="CAT-005">Ointment</option>
                             </select>
                           </div>
 
@@ -158,12 +159,21 @@
                               placeholder="e.g., 28" />
                           </div>
 
+                          <!-- Reorder Level -->
+                          <div class="mb-3">
+                            <label for="reorderLevel" class="form-label fw-medium text-dark-blue" style="font-size: 14px">
+                              Reorder Level <span class="text-danger">*</span>
+                            </label>
+                            <input type="number" class="form-control py-2 rounded-3" id="reorderLevel"
+                              placeholder="e.g., 15" />
+                          </div>
+
                           <!-- Price -->
                           <div class="mb-3">
-                            <label for="Price" class="form-label fw-medium text-dark-blue" style="font-size: 14px">
+                            <label for="price" class="form-label fw-medium text-dark-blue" style="font-size: 14px">
                               Price ($) <span class="text-danger">*</span>
                             </label>
-                            <input type="number" class="form-control py-2 rounded-3" id="Price"
+                            <input type="number" class="form-control py-2 rounded-3" id="price"
                               placeholder="e.g., 291.07" />
                           </div>
 
@@ -176,24 +186,23 @@
                             <input type="date" class="form-control py-2 rounded-3" id="productExpireDate" />
                           </div>
 
-                          <!-- Supplier -->
+                          <!-- Supplier Id -->
                           <div class="mb-3">
-                            <label for="productSupplier" class="form-label fw-medium text-dark-blue"
+                            <label for="productSupplierId" class="form-label fw-medium text-dark-blue"
                               style="font-size: 14px">
-                              Supplier <span class="text-danger">*</span>
+                              Supplier Id <span class="text-danger">*</span>
                             </label>
-                            <input type="text" class="form-control py-2 rounded-3" id="productSupplier"
+                            <input type="text" class="form-control py-2 rounded-3" id="productSupplierId"
                               placeholder="e.g., SUP-004" />
                           </div>
 
-                          <!-- Status -->
+                          <!-- Created Date -->
                           <div class="mb-3">
-                            <label for="productStatus" class="form-label fw-medium text-dark-blue"
+                            <label for="productCreatedDate" class="form-label fw-medium text-dark-blue"
                               style="font-size: 14px">
-                              Status <span class="text-danger">*</span>
+                              Created Date <span class="text-danger">*</span>
                             </label>
-                            <input type="text" class="form-control py-2 rounded-3" id="productStatus"
-                              placeholder="e.g., in stock" />
+                            <input type="date" class="form-control py-2 rounded-3" id="productCreatedDate" />
                           </div>
 
                         </form>

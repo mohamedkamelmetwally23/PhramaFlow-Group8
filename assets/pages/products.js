@@ -15,7 +15,8 @@ loadLayout("Products");
 // =======================
 // Variables
 // =======================
-let products = [];
+let productsRaw = [];
+let productsTable = [];
 let editIndex = null;
 let deleteIndex = null;
 let currentPage = 1;
@@ -27,11 +28,43 @@ const rowsPerPage = 10;
 async function loadProducts() {
   try {
     const res = await getProductsWithRelations();
-    products = res?.data || [];
+    productsRaw = res?.data || [];
+
+    // Table Data Only
+    productsTable = productsRaw.map((p) => {
+      let statusText = "In Stock";
+      let statusClass = "badge bg-success";   
+
+      if (p.quantity === 0) {
+        statusText = "Out of Stock";
+        statusClass = "badge bg-danger"; 
+      } else if (p.quantity <= p.reorderLevel) {
+        statusText = "Low Stock";
+        statusClass = "badge bg-warning";
+      }
+
+      return {
+        id: p.id, 
+        sku: p.sku,
+        product_name: p.product_name,
+        category: p.category_name,
+        supplier: p.supplier_name,
+        quantity: p.quantity,
+        status: `<span class="${statusClass}">${statusText}</span>`,
+        price: p.price,
+        expire_date: p.expire_date,
+      };
+    });
+
+    renderTablePage(
+      productsTable,
+      actionsHTML,
+      currentPage,
+      rowsPerPage,
+      "products"
+    );
 
     updateCaption();
-    updatePageInfo();
-    renderTablePage(products, actionsHTML, currentPage, rowsPerPage, "products");
   } catch (err) {
     console.error("Error loading products:", err);
     alert("Failed to load products data.");
@@ -60,19 +93,8 @@ function actionsHTML(product) {
 // =======================
 function updateCaption() {
   document.getElementById("tableCaption").innerHTML = `
-    <i class="fa-solid fa-box"></i> All Products (${products.length})
+    <i class="fa-solid fa-box"></i> All Products (${productsRaw.length})
   `;
-}
-
-// =======================
-// Pagination Info
-// =======================
-function updatePageInfo() {
-  const total = products.length;
-  const from = (currentPage - 1) * rowsPerPage + 1;
-  const to = Math.min(currentPage * rowsPerPage, total);
-  document.getElementById("tableInfo").textContent = `${from}–${to} of ${total}`;
-  document.getElementById("pageNumber").textContent = currentPage;
 }
 
 // =======================
@@ -81,16 +103,26 @@ function updatePageInfo() {
 document.getElementById("prevBtn").addEventListener("click", () => {
   if (currentPage > 1) {
     currentPage--;
-    renderTablePage(products, actionsHTML, currentPage, rowsPerPage, "products");
-    updatePageInfo();
+    renderTablePage(
+      productsTable,
+      actionsHTML,
+      currentPage,
+      rowsPerPage,
+      "products",
+    );
   }
 });
 
 document.getElementById("nextBtn").addEventListener("click", () => {
-  if (currentPage < Math.ceil(products.length / rowsPerPage)) {
+  if (currentPage < Math.ceil(productsTable.length / rowsPerPage)) {
     currentPage++;
-    renderTablePage(products, actionsHTML, currentPage, rowsPerPage, "products");
-    updatePageInfo();
+    renderTablePage(
+      productsTable,
+      actionsHTML,
+      currentPage,
+      rowsPerPage,
+      "products",
+    );
   }
 });
 
@@ -100,58 +132,60 @@ document.getElementById("nextBtn").addEventListener("click", () => {
 document.getElementById("addProduct").addEventListener("click", () => {
   editIndex = null;
   document.getElementById("addProductForm").reset();
-  document.getElementById("addProductModalLabel").textContent = "Add New Product";
+  document.getElementById("addProductModalLabel").textContent =
+    "Add New Product";
   document.getElementById("productModalSubtitle").textContent =
     "Enter the details for the new product";
 
-  const modal = new bootstrap.Modal(
-    document.getElementById("addProductModal")
-  );
+  const modal = new bootstrap.Modal(document.getElementById("addProductModal"));
   modal.show();
 });
 
 // =======================
 // Submit Add / Edit
 // =======================
-document.getElementById("addProductForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
+document
+  .getElementById("addProductForm")
+  .addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const data = {
-    sku: document.getElementById("productSKU").value.trim(),
-    product_name: document.getElementById("productName").value.trim(),
-    category_id: document.getElementById("productCategory").value.trim(),
-    quantity: document.getElementById("quantity").value.trim(),
-    price: document.getElementById("Price").value.trim(),
-    expire_date: document.getElementById("productExpireDate").value.trim(),
-    supplier_id: document.getElementById("productSupplier").value.trim(),
-    status: document.getElementById("productStatus").value.trim(),
-  };
+    const data = {
+      sku: document.getElementById("productSKU").value.trim(),
+      product_name: document.getElementById("productName").value.trim(),
+      category_id: document.getElementById("productCategory").value.trim(),
+      quantity: Number(document.getElementById("quantity").value),
+      reorderLevel: Number(document.getElementById("reorderLevel").value),
+      price: Number(document.getElementById("price").value),
+      expire_date: document.getElementById("productExpireDate").value.trim(),
+      supplier_id: document.getElementById("productSupplierId").value.trim(),
+      created_at: document.getElementById("productCreatedDate").value.trim(),
+    };
 
-  // Validation
-  for (let key in data) {
-    if (!data[key]) {
-      alert("Please fill all fields");
-      return;
-    }
-  }
-
-  try {
-    if (editIndex === null) {
-      await createProduct(data);
-    } else {
-      await updateProduct(products[editIndex].id, data);
+    // Validation
+    for (let key in data) {
+      if (!data[key]) {
+        alert("Please fill all fields");
+        return;
+      }
     }
 
-    await loadProducts();
-    const modal = bootstrap.Modal.getInstance(
-      document.getElementById("addProductModal")
-    );
-    modal.hide();
-  } catch (err) {
-    console.error("Error saving product:", err);
-    alert("Failed to save product.");
-  }
-});
+    try {
+      if (editIndex === null) {
+        await createProduct(data);
+      } else {
+        await updateProduct(productsRaw[editIndex].id, data);
+      }
+
+      await loadProducts();
+      const modal = bootstrap.Modal.getInstance(
+        document.getElementById("addProductModal"),
+      );
+      modal.hide();
+    } catch (err) {
+      console.error("Error saving product:", err);
+      alert("Failed to save product.");
+    }
+  });
 
 // =======================
 // Table Events (Edit / Delete)
@@ -165,23 +199,25 @@ document.getElementById("tableBody").addEventListener("click", function (e) {
   // EDIT
   if (e.target.closest(".edit-btn")) {
     editIndex = index;
-    const p = products[index];
+    const p = productsRaw[index];
 
     document.getElementById("productSKU").value = p.sku;
     document.getElementById("productName").value = p.product_name;
     document.getElementById("productCategory").value = p.category_id;
     document.getElementById("quantity").value = p.quantity;
-    document.getElementById("Price").value = p.price;
+    document.getElementById("reorderLevel").value = p.reorderLevel;
+    document.getElementById("price").value = p.price;
     document.getElementById("productExpireDate").value = p.expire_date;
-    document.getElementById("productSupplier").value = p.supplier_id;
-    document.getElementById("productStatus").value = p.status;
+    document.getElementById("productSupplierId").value = p.supplier_id;
+    document.getElementById("productCreatedDate").value = p.created_at;
 
-    document.getElementById("addProductModalLabel").textContent = "Edit Product";
+    document.getElementById("addProductModalLabel").textContent =
+      "Edit Product";
     document.getElementById("productModalSubtitle").textContent =
       "Update the product information below";
 
     const modal = new bootstrap.Modal(
-      document.getElementById("addProductModal")
+      document.getElementById("addProductModal"),
     );
     modal.show();
   }
@@ -190,9 +226,7 @@ document.getElementById("tableBody").addEventListener("click", function (e) {
   if (e.target.closest(".delete-btn")) {
     deleteIndex = index;
 
-    const modal = new bootstrap.Modal(
-      document.getElementById("deleteModal")
-    );
+    const modal = new bootstrap.Modal(document.getElementById("deleteModal"));
     modal.show();
   }
 });
@@ -203,7 +237,7 @@ document.getElementById("tableBody").addEventListener("click", function (e) {
 document.getElementById("confirmDelete").addEventListener("click", async () => {
   if (deleteIndex === null) return;
 
-  const product = products[deleteIndex];
+  const product = productsRaw[deleteIndex];
 
   try {
     await deleteProduct(product.id);
@@ -212,7 +246,7 @@ document.getElementById("confirmDelete").addEventListener("click", async () => {
     deleteIndex = null;
 
     const modal = bootstrap.Modal.getInstance(
-      document.getElementById("deleteModal")
+      document.getElementById("deleteModal"),
     );
     modal.hide();
   } catch (err) {

@@ -61,10 +61,11 @@ export const createProduct = async (data) => {
     product_name: data.product_name,
     category_id: data.category_id,
     quantity: data.quantity,
+    reorderLevel: data.reorderLevel,
     price: data.price,
     expire_date: data.expire_date,
     supplier_id: data.supplier_id,
-    status: data.status,
+    created_at: data.created_at,
   });
 
   return await apiRequest("products", {
@@ -84,14 +85,15 @@ export const updateProduct = async (productId, data) => {
     product_name: data.product_name,
     category_id: data.category_id,
     quantity: data.quantity,
+    reorderLevel: data.reorderLevel,
     price: data.price,
     expire_date: data.expire_date,
     supplier_id: data.supplier_id,
-    status: data.status,
+    created_at: data.created_at,
   });
 
   return await apiRequest(`products/${productId}`, {
-    method: "PUT",
+    method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(updatedProduct),
   });
