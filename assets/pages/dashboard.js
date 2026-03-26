@@ -249,7 +249,7 @@ const init = async () => {
   renderRecentActivity();
   renderPendingOrders();
 
-  showSpinner(nearExpireContainer);
+  showSpinner(lowStockAlertContainer);
   showSpinner(nearExpireContainer);
 
   if (result.success) {
