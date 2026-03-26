@@ -3,9 +3,8 @@ import {
   createStockAdjustments,
   updateStock,
   deleteStock,
+  getProductNames,
 } from "../api/stockAdjustmentsApi.js";
-
-import { getProductNames } from "../api/productsApi.js";
 import loadLayout from "../ui/layout.js";
 
 // ===================== ELEMENTS =====================
@@ -17,256 +16,182 @@ const addBtn = document.querySelector('[data-action="add"]');
 const modalEl = document.getElementById("addStockModal");
 const modalTitle = document.getElementById("addStockModalLabel");
 
-// Cards
 const totalAdjustments = document.querySelector("#totalAdjustments");
-const totalCorrection = document.querySelector("#totalCorrection");
-const totalInitialStock = document.querySelector("#totalinItial_stock");
-const totalStockIn = document.querySelector("#totalStock_in");
-const totalStockOut = document.querySelector("#totalStock_out");
-const totalExpiryWriteoff = document.querySelector("#totslExpiry_writeoff");
+const totalIncrease = document.querySelector("#totalIncrease");
+const totalDecrease = document.querySelector("#totalDecrease");
+const totalNetChange = document.querySelector("#totalNetChange");
 
 // ===================== STATE =====================
 let allStocks = [];
-let currentPage = 1;
-const rowsPerPage = 10;
 
-// ===================== LOAD PRODUCTS form Add stock =====================
+// ===================== LOAD PRODUCTS =====================
 const loadProducts = async () => {
-  const res = await getProductNames();
-
-  if (res.success && res.data.length > 0) {
-    productSelect.innerHTML = `<option value="">Select Product</option>`;
-    res.data.forEach((product) => {
-      const option = `<option value="${product.id}">${product.name}</option>`;
-      productSelect.insertAdjacentHTML("beforeend", option);
+  const products = await getProductNames();
+  if (products.length) {
+    productSelect.innerHTML = '<option value="">Select Product</option>';
+    products.forEach((product) => {
+      productSelect.insertAdjacentHTML(
+        "beforeend",
+        `<option value="${product.id}">${product.name}</option>`,
+      );
     });
-  } else {
-    console.error("Failed to load products:", res.error);
   }
 };
 
 // ===================== CALCULATIONS =====================
-const displayCalc = (stocks) => {
-  let totalCorrectionVal = 0;
-  let totalStockInVal = 0;
-  let totalExpiryWriteoffVal = 0;
-  let totalStockOutVal = 0;
-  let totalInitialStockVal = 0;
+const getStats = (stocks) => {
+  let increase = 0,
+    decrease = 0;
 
   stocks.forEach((stock) => {
-    switch (stock.type) {
-      case "correction":
-        totalCorrectionVal += Number(stock.quantity);
-        break;
-      case "initial_stock":
-        totalInitialStockVal += Number(stock.quantity);
-        break;
-      case "stock_in":
-        totalStockInVal += Number(stock.quantity);
-        break;
-      case "stock_out":
-        totalStockOutVal += Number(stock.quantity);
-        break;
-      case "expiry_writeoff":
-        totalExpiryWriteoffVal += Number(stock.quantity);
-        break;
-    }
+    if (stock.adjustment_type === "increase")
+      increase += Number(stock.quantity);
+    if (stock.adjustment_type === "decrease")
+      decrease += Number(stock.quantity);
   });
 
   return {
-    totalAdjustment: stocks.length,
-    totalCorrection: totalCorrectionVal,
-    totalStockIn: totalStockInVal,
-    totalStockOut: totalStockOutVal,
-    totalExpiryWriteoff: totalExpiryWriteoffVal,
-    totalInitialStock: totalInitialStockVal,
+    total: stocks.length,
+    increase,
+    decrease,
+    net: increase - decrease,
   };
 };
 
-// ===================== RENDER CARDS =====================
-const renderCards = (stats) => {
-  totalAdjustments.textContent = stats.totalAdjustment;
-  totalCorrection.textContent = stats.totalCorrection;
-  totalInitialStock.textContent = stats.totalInitialStock;
-  totalStockIn.textContent = stats.totalStockIn;
-  totalStockOut.textContent = stats.totalStockOut;
-  totalExpiryWriteoff.textContent = stats.totalExpiryWriteoff;
+const updateCards = (stats) => {
+  totalAdjustments.textContent = stats.total;
+  totalIncrease.textContent = stats.increase;
+  totalDecrease.textContent = stats.decrease;
+  totalNetChange.textContent = stats.net;
 };
 
 // ===================== TABLE =====================
-const displayStockAdjustments = (stock) => {
+const renderStockRow = (stock) => {
   const markup = `
-  <tr>
-    <td class="text-muted">${stock.productName}</td>
-    <td class="text-muted">${stock.type}</td>
-    <td class="text-muted">${stock.quantity}</td>
-    <td class="text-muted">${stock.status}</td>
-    <td class="text-muted">${stock.note}</td>
-    <td class="text-muted">${stock.date}</td>
-    <td>
-      <div class="d-flex justify-content-center gap-3">
-
-  <button
-    class="btn btn-sm edit-btn d-flex align-items-center justify-content-center p-0 border-0 bg-transparent shadow-none"
-    data-bs-toggle="modal"
-    data-bs-target="#addStockModal"
-    data-action="edit"
-    data-id="${stock.id}"
-    data-product-id="${stock.product_id}"
-    data-type="${stock.type}"
-    data-quantity="${stock.quantity}"
-    data-status="${stock.status}"
-    data-note="${stock.note}"
-    data-date="${stock.date}"
-  >
-    <i class="fa-solid fa-pen-to-square edit-icon text-primary"></i> 
-  </button>
-
-  <button
-    class="btn btn-sm delete-btn d-flex align-items-center justify-content-center p-0 border-0 bg-transparent shadow-none"
-    data-action="delete"
-    data-id="${stock.id}"
-  >
-    <i class="fa-solid fa-trash delete-icon text-danger"></i> 
-  </button>
-
-</div>
-    </td>
-  </tr>
-`;
-
+    <tr>
+      <td class="text-muted">${stock.productName}</td>
+      <td class="text-muted">${stock.adjustment_type}</td>
+      <td class="text-muted">${stock.quantity}</td>
+      <td class="text-muted">${stock.reason}</td>
+      <td class="text-muted">${stock.timestamp}</td>
+      <td class="text-muted">${stock.user}</td>
+      <td>
+        <div class="d-flex justify-content-center gap-3">
+          <button class="btn btn-sm p-0 border-0 bg-transparent edit-btn" 
+            data-bs-toggle="modal" data-bs-target="#addStockModal"
+            data-id="${stock.id}" data-product-id="${stock.product_id}"
+            data-type="${stock.adjustment_type}" data-quantity="${stock.quantity}"
+            data-reason="${stock.reason}" data-user="${stock.user}">
+            <i class="fa-solid fa-pen-to-square text-primary"></i>
+          </button>
+          <button class="btn btn-sm p-0 border-0 bg-transparent delete-btn" 
+            data-id="${stock.id}">
+            <i class="fa-solid fa-trash text-danger"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
+  `;
   tableBody.insertAdjacentHTML("beforeend", markup);
 };
 
-const renderStock = (stocks) => {
+const renderTable = (stocks) => {
   tableBody.innerHTML = "";
-  if (!stocks || stocks.length === 0) {
-    tableBody.innerHTML = `
-      <tr>
-        <td colspan="7" class="text-center text-secondary">
-          No Stock found.
-        </td>
-      </tr>
-    `;
+
+  if (!stocks?.length) {
+    tableBody.innerHTML =
+      '<tr><td colspan="7" class="text-center">No Stock found.</td></tr>';
     return;
   }
-  stocks.forEach(displayStockAdjustments);
+
+  stocks.forEach(renderStockRow);
 };
 
-// ===================== INIT =====================
-const init = async () => {
+// ===================== LOAD DATA =====================
+const loadData = async () => {
   const res = await getAllStockAdjustmentsByProductName();
 
   if (res.success) {
     allStocks = res.data;
-    renderStock(allStocks);
-    renderCards(displayCalc(allStocks));
+    renderTable(allStocks);
+    updateCards(getStats(allStocks));
   } else {
-    tableBody.innerHTML = `
-      <p class="text-center text-danger">
-        Error: ${res.error}
-      </p>
-    `;
+    tableBody.innerHTML = `<tr><td colspan="7" class="text-center text-danger">Error: ${res.error}</td></tr>`;
   }
 };
 
 // ===================== FILTER =====================
 const filterStocks = (type) => {
-  if (!type) {
-    renderStock(allStocks);
-    renderCards(displayCalc(allStocks));
-    return;
-  }
-
-  const filtered = allStocks.filter((stock) => stock.type === type);
-  renderStock(filtered);
-  renderCards(displayCalc(filtered));
+  const filtered = type ? allStocks.filter((s) => s.type === type) : allStocks;
+  renderTable(filtered);
+  updateCards(getStats(filtered));
 };
 
-filterSelect.addEventListener("change", (e) => {
-  filterStocks(e.target.value);
-});
+filterSelect.addEventListener("change", (e) => filterStocks(e.target.value));
 
 // ===================== DELETE & EDIT =====================
 tableBody.addEventListener("click", async (e) => {
-  // DELETE
-  const deleteBtn = e.target.closest('[data-action="delete"]');
+  const deleteBtn = e.target.closest(".delete-btn");
   if (deleteBtn) {
-    const id = deleteBtn.dataset.id;
-    const result = await deleteStock(id);
-    if (result.success) init();
-    else alert(result.error);
+    if (confirm("Are you sure?")) {
+      const result = await deleteStock(deleteBtn.dataset.id);
+      if (result.success) loadData();
+      else alert(result.error);
+    }
     return;
   }
 
-  // EDIT
-  const editBtn = e.target.closest('[data-action="edit"]');
+  const editBtn = e.target.closest(".edit-btn");
   if (editBtn) {
-    const id = editBtn.dataset.id;
-
     productSelect.value = editBtn.dataset.productId;
     document.getElementById("Type").value = editBtn.dataset.type;
     document.getElementById("Quantity").value = editBtn.dataset.quantity;
-    document.getElementById("Status").value = editBtn.dataset.status;
-    document.getElementById("Note").value = editBtn.dataset.note;
-    document.getElementById("Date").value = editBtn.dataset.date;
-
-    stockForm.dataset.editId = id;
-
+    document.getElementById("reason").value = editBtn.dataset.reason;
+    document.getElementById("user").value = editBtn.dataset.user;
+    stockForm.dataset.editId = editBtn.dataset.id;
     modalTitle.textContent = "Edit Stock";
   }
 });
 
-// ===================== FORM =====================
+// ===================== FORM SUBMIT =====================
 stockForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const id = stockForm.dataset.editId;
-
-  const newStock = {
+  const stockData = {
     product_id: productSelect.value,
     type: document.getElementById("Type").value,
     quantity: document.getElementById("Quantity").value,
-    status: document.getElementById("Status").value,
+    status: document.getElementById("reason").value,
     note: document.getElementById("Note").value,
-    date: document.getElementById("Date").value,
+    user: document.getElementById("user").value,
   };
 
-  let result;
-
-  if (id) {
-    result = await updateStock(id, newStock);
-    delete stockForm.dataset.editId;
-  } else {
-    result = await createStockAdjustments(newStock);
-  }
+  const id = stockForm.dataset.editId;
+  const result = id
+    ? await updateStock(id, stockData)
+    : await createStockAdjustments(stockData);
 
   if (result.success) {
-    init();
+    await loadData();
     stockForm.reset();
-
-    const modal = bootstrap.Modal.getInstance(modalEl);
-    modal.hide();
+    delete stockForm.dataset.editId;
+    bootstrap.Modal.getInstance(modalEl).hide();
   } else {
     alert(result.error);
   }
 });
 
-// ===================== RESET FOR ADD =====================
-addBtn.addEventListener("click", () => {
+// ===================== RESET FORM =====================
+const resetForm = () => {
   stockForm.reset();
   delete stockForm.dataset.editId;
   modalTitle.textContent = "Add New Stock Adjustments";
-});
+};
 
-// ===================== CLEAN MODAL =====================
-modalEl.addEventListener("hidden.bs.modal", () => {
-  stockForm.reset();
-  delete stockForm.dataset.editId;
-  modalTitle.textContent = "Add New Stock Adjustments";
-});
+addBtn.addEventListener("click", resetForm);
+modalEl.addEventListener("hidden.bs.modal", resetForm);
 
-// ===================== START =====================
+// ===================== INIT =====================
 loadLayout("Stock Adjustments");
 loadProducts();
-init();
+loadData();
