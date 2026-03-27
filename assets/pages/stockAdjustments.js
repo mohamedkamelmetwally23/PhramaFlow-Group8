@@ -101,7 +101,7 @@ async function loadStocks() {
       return {
         id: item.id,
         product_name: productName,
-        adjustment_type: `<span class="${badgeClass}">${typeText}</span>`,
+        adjustment_type: `<span class="${badgeClass}">${typeText}</span>`, // edit
         quantity: item.quantity || 0,
         reason: item.reason || "N/A",
         timestamp: item.timestamp

@@ -78,3 +78,5 @@ export function renderTablePage(
   document.getElementById('nextBtn').disabled =
     page === Math.ceil(data.length / rowsPerPage);
 }
+
+// test
