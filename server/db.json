@@ -26,6 +26,7 @@
       "description": "Category for ointment products"
     }
   ],
+
   "suppliers": [
     {
       "id": "SUP-001",
@@ -428,6 +429,7 @@
       "address": "147 El-Horreya Ave, Dokki, Cairo, Egypt"
     }
   ],
+
   "products": [
     {
       "id": "PRD-001",
@@ -1030,7 +1032,17 @@
       "created_at": "2025-10-20T10:00:00Z"
     }
   ],
+
   "stock_adjustments": [
+    {
+      "id": "STK-001",
+      "product_id": "PRD-042",
+      "adjustment_type": "decrease",
+      "quantity": 8,
+      "reason": "Inventory correction",
+      "timestamp": "2025-10-07T12:00:00Z",
+      "user": "Admin"
+    },
     {
       "id": "STK-002",
       "product_id": "PRD-009",
@@ -1473,6 +1485,7 @@
       "user": "Admin"
     }
   ],
+
   "purchase_orders": [
     {
       "id": "ORD-001",
@@ -1481,19 +1494,11 @@
       "creation_date": "2025-10-16T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-005",
-          "quantity": 20,
-          "unit_price": 200
-        },
-        {
-          "product_id": "PRD-012",
-          "quantity": 15,
-          "unit_price": 120
-        }
+        { "product_id": "PRD-005", "quantity": 20, "unit_price": 200.0 },
+        { "product_id": "PRD-012", "quantity": 15, "unit_price": 120.0 }
       ],
       "total_quantity": 35,
-      "total_amount": 5800
+      "total_amount": 5800.0
     },
     {
       "id": "ORD-002",
@@ -1502,19 +1507,11 @@
       "creation_date": "2025-11-05T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-007",
-          "quantity": 25,
-          "unit_price": 295
-        },
-        {
-          "product_id": "PRD-019",
-          "quantity": 10,
-          "unit_price": 19
-        }
+        { "product_id": "PRD-007", "quantity": 25, "unit_price": 295.0 },
+        { "product_id": "PRD-019", "quantity": 10, "unit_price": 19.0 }
       ],
       "total_quantity": 35,
-      "total_amount": 7565
+      "total_amount": 7565.0
     },
     {
       "id": "ORD-003",
@@ -1523,19 +1520,11 @@
       "creation_date": "2025-11-10T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-021",
-          "quantity": 30,
-          "unit_price": 86.5
-        },
-        {
-          "product_id": "PRD-033",
-          "quantity": 20,
-          "unit_price": 11
-        }
+        { "product_id": "PRD-021", "quantity": 30, "unit_price": 86.5 },
+        { "product_id": "PRD-033", "quantity": 20, "unit_price": 11.0 }
       ],
       "total_quantity": 50,
-      "total_amount": 2815
+      "total_amount": 2815.0
     },
     {
       "id": "ORD-004",
@@ -1544,19 +1533,11 @@
       "creation_date": "2025-12-09T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-002",
-          "quantity": 12,
-          "unit_price": 98
-        },
-        {
-          "product_id": "PRD-026",
-          "quantity": 8,
-          "unit_price": 174
-        }
+        { "product_id": "PRD-002", "quantity": 12, "unit_price": 98.0 },
+        { "product_id": "PRD-026", "quantity": 8, "unit_price": 174.0 }
       ],
       "total_quantity": 20,
-      "total_amount": 2568
+      "total_amount": 2568.0
     },
     {
       "id": "ORD-005",
@@ -1565,19 +1546,11 @@
       "creation_date": "2025-06-29T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-010",
-          "quantity": 40,
-          "unit_price": 139
-        },
-        {
-          "product_id": "PRD-035",
-          "quantity": 25,
-          "unit_price": 104
-        }
+        { "product_id": "PRD-010", "quantity": 40, "unit_price": 139.0 },
+        { "product_id": "PRD-035", "quantity": 25, "unit_price": 104.0 }
       ],
       "total_quantity": 65,
-      "total_amount": 8160
+      "total_amount": 8160.0
     },
     {
       "id": "ORD-006",
@@ -1586,19 +1559,11 @@
       "creation_date": "2025-07-21T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-048",
-          "quantity": 10,
-          "unit_price": 130
-        },
-        {
-          "product_id": "PRD-049",
-          "quantity": 8,
-          "unit_price": 28
-        }
+        { "product_id": "PRD-048", "quantity": 10, "unit_price": 130.0 },
+        { "product_id": "PRD-049", "quantity": 8, "unit_price": 28.0 }
       ],
       "total_quantity": 18,
-      "total_amount": 1524
+      "total_amount": 1524.0
     },
     {
       "id": "ORD-007",
@@ -1607,19 +1572,11 @@
       "creation_date": "2025-07-29T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-006",
-          "quantity": 15,
-          "unit_price": 99
-        },
-        {
-          "product_id": "PRD-022",
-          "quantity": 10,
-          "unit_price": 162
-        }
+        { "product_id": "PRD-006", "quantity": 15, "unit_price": 99.0 },
+        { "product_id": "PRD-022", "quantity": 10, "unit_price": 162.0 }
       ],
       "total_quantity": 25,
-      "total_amount": 3105
+      "total_amount": 3105.0
     },
     {
       "id": "ORD-008",
@@ -1628,19 +1585,11 @@
       "creation_date": "2026-01-13T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-011",
-          "quantity": 20,
-          "unit_price": 20
-        },
-        {
-          "product_id": "PRD-028",
-          "quantity": 12,
-          "unit_price": 145
-        }
+        { "product_id": "PRD-011", "quantity": 20, "unit_price": 20.0 },
+        { "product_id": "PRD-028", "quantity": 12, "unit_price": 145.0 }
       ],
       "total_quantity": 32,
-      "total_amount": 2140
+      "total_amount": 2140.0
     },
     {
       "id": "ORD-009",
@@ -1649,19 +1598,11 @@
       "creation_date": "2025-12-06T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-014",
-          "quantity": 18,
-          "unit_price": 180
-        },
-        {
-          "product_id": "PRD-027",
-          "quantity": 15,
-          "unit_price": 38
-        }
+        { "product_id": "PRD-014", "quantity": 18, "unit_price": 180.0 },
+        { "product_id": "PRD-027", "quantity": 15, "unit_price": 38.0 }
       ],
       "total_quantity": 33,
-      "total_amount": 3810
+      "total_amount": 3810.0
     },
     {
       "id": "ORD-010",
@@ -1670,19 +1611,11 @@
       "creation_date": "2025-07-29T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-003",
-          "quantity": 25,
-          "unit_price": 110
-        },
-        {
-          "product_id": "PRD-018",
-          "quantity": 10,
-          "unit_price": 228
-        }
+        { "product_id": "PRD-003", "quantity": 25, "unit_price": 110.0 },
+        { "product_id": "PRD-018", "quantity": 10, "unit_price": 228.0 }
       ],
       "total_quantity": 35,
-      "total_amount": 5030
+      "total_amount": 5030.0
     },
     {
       "id": "ORD-011",
@@ -1691,19 +1624,11 @@
       "creation_date": "2026-01-20T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-004",
-          "quantity": 20,
-          "unit_price": 156
-        },
-        {
-          "product_id": "PRD-042",
-          "quantity": 8,
-          "unit_price": 91
-        }
+        { "product_id": "PRD-004", "quantity": 20, "unit_price": 156.0 },
+        { "product_id": "PRD-042", "quantity": 8, "unit_price": 91.0 }
       ],
       "total_quantity": 28,
-      "total_amount": 3848
+      "total_amount": 3848.0
     },
     {
       "id": "ORD-012",
@@ -1712,19 +1637,11 @@
       "creation_date": "2026-01-02T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-009",
-          "quantity": 22,
-          "unit_price": 80
-        },
-        {
-          "product_id": "PRD-036",
-          "quantity": 15,
-          "unit_price": 94
-        }
+        { "product_id": "PRD-009", "quantity": 22, "unit_price": 80.0 },
+        { "product_id": "PRD-036", "quantity": 15, "unit_price": 94.0 }
       ],
       "total_quantity": 37,
-      "total_amount": 3170
+      "total_amount": 3170.0
     },
     {
       "id": "ORD-013",
@@ -1733,19 +1650,11 @@
       "creation_date": "2025-05-13T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-001",
-          "quantity": 30,
-          "unit_price": 291
-        },
-        {
-          "product_id": "PRD-023",
-          "quantity": 10,
-          "unit_price": 229
-        }
+        { "product_id": "PRD-001", "quantity": 30, "unit_price": 291.0 },
+        { "product_id": "PRD-023", "quantity": 10, "unit_price": 229.0 }
       ],
       "total_quantity": 40,
-      "total_amount": 11020
+      "total_amount": 11020.0
     },
     {
       "id": "ORD-014",
@@ -1754,19 +1663,11 @@
       "creation_date": "2025-08-18T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-008",
-          "quantity": 18,
-          "unit_price": 57
-        },
-        {
-          "product_id": "PRD-039",
-          "quantity": 12,
-          "unit_price": 234
-        }
+        { "product_id": "PRD-008", "quantity": 18, "unit_price": 57.0 },
+        { "product_id": "PRD-039", "quantity": 12, "unit_price": 234.0 }
       ],
       "total_quantity": 30,
-      "total_amount": 3834
+      "total_amount": 3834.0
     },
     {
       "id": "ORD-015",
@@ -1775,19 +1676,11 @@
       "creation_date": "2025-12-01T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-013",
-          "quantity": 25,
-          "unit_price": 156
-        },
-        {
-          "product_id": "PRD-031",
-          "quantity": 20,
-          "unit_price": 162
-        }
+        { "product_id": "PRD-013", "quantity": 25, "unit_price": 156.0 },
+        { "product_id": "PRD-031", "quantity": 20, "unit_price": 162.0 }
       ],
       "total_quantity": 45,
-      "total_amount": 7140
+      "total_amount": 7140.0
     },
     {
       "id": "ORD-016",
@@ -1796,19 +1689,11 @@
       "creation_date": "2026-02-11T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-015",
-          "quantity": 12,
-          "unit_price": 179
-        },
-        {
-          "product_id": "PRD-044",
-          "quantity": 8,
-          "unit_price": 58
-        }
+        { "product_id": "PRD-015", "quantity": 12, "unit_price": 179.0 },
+        { "product_id": "PRD-044", "quantity": 8, "unit_price": 58.0 }
       ],
       "total_quantity": 20,
-      "total_amount": 2612
+      "total_amount": 2612.0
     },
     {
       "id": "ORD-017",
@@ -1817,19 +1702,11 @@
       "creation_date": "2025-06-07T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-017",
-          "quantity": 10,
-          "unit_price": 249
-        },
-        {
-          "product_id": "PRD-029",
-          "quantity": 15,
-          "unit_price": 15
-        }
+        { "product_id": "PRD-017", "quantity": 10, "unit_price": 249.0 },
+        { "product_id": "PRD-029", "quantity": 15, "unit_price": 15.0 }
       ],
       "total_quantity": 25,
-      "total_amount": 2715
+      "total_amount": 2715.0
     },
     {
       "id": "ORD-018",
@@ -1838,19 +1715,11 @@
       "creation_date": "2025-12-22T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-020",
-          "quantity": 20,
-          "unit_price": 171
-        },
-        {
-          "product_id": "PRD-045",
-          "quantity": 15,
-          "unit_price": 73
-        }
+        { "product_id": "PRD-020", "quantity": 20, "unit_price": 171.0 },
+        { "product_id": "PRD-045", "quantity": 15, "unit_price": 73.0 }
       ],
       "total_quantity": 35,
-      "total_amount": 4515
+      "total_amount": 4515.0
     },
     {
       "id": "ORD-019",
@@ -1859,19 +1728,11 @@
       "creation_date": "2025-04-08T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-016",
-          "quantity": 18,
-          "unit_price": 104
-        },
-        {
-          "product_id": "PRD-034",
-          "quantity": 12,
-          "unit_price": 50
-        }
+        { "product_id": "PRD-016", "quantity": 18, "unit_price": 104.0 },
+        { "product_id": "PRD-034", "quantity": 12, "unit_price": 50.0 }
       ],
       "total_quantity": 30,
-      "total_amount": 2472
+      "total_amount": 2472.0
     },
     {
       "id": "ORD-020",
@@ -1880,19 +1741,11 @@
       "creation_date": "2025-05-29T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-024",
-          "quantity": 15,
-          "unit_price": 32
-        },
-        {
-          "product_id": "PRD-041",
-          "quantity": 10,
-          "unit_price": 24
-        }
+        { "product_id": "PRD-024", "quantity": 15, "unit_price": 32.0 },
+        { "product_id": "PRD-041", "quantity": 10, "unit_price": 24.0 }
       ],
       "total_quantity": 25,
-      "total_amount": 720
+      "total_amount": 720.0
     },
     {
       "id": "ORD-021",
@@ -1901,19 +1754,11 @@
       "creation_date": "2025-09-10T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-025",
-          "quantity": 8,
-          "unit_price": 183
-        },
-        {
-          "product_id": "PRD-047",
-          "quantity": 12,
-          "unit_price": 79
-        }
+        { "product_id": "PRD-025", "quantity": 8, "unit_price": 183.0 },
+        { "product_id": "PRD-047", "quantity": 12, "unit_price": 79.0 }
       ],
       "total_quantity": 20,
-      "total_amount": 2412
+      "total_amount": 2412.0
     },
     {
       "id": "ORD-022",
@@ -1922,19 +1767,11 @@
       "creation_date": "2026-03-12T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-030",
-          "quantity": 10,
-          "unit_price": 70
-        },
-        {
-          "product_id": "PRD-050",
-          "quantity": 15,
-          "unit_price": 88
-        }
+        { "product_id": "PRD-030", "quantity": 10, "unit_price": 70.0 },
+        { "product_id": "PRD-050", "quantity": 15, "unit_price": 88.0 }
       ],
       "total_quantity": 25,
-      "total_amount": 2020
+      "total_amount": 2020.0
     },
     {
       "id": "ORD-023",
@@ -1943,19 +1780,11 @@
       "creation_date": "2026-01-28T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-032",
-          "quantity": 12,
-          "unit_price": 213
-        },
-        {
-          "product_id": "PRD-040",
-          "quantity": 8,
-          "unit_price": 33
-        }
+        { "product_id": "PRD-032", "quantity": 12, "unit_price": 213.0 },
+        { "product_id": "PRD-040", "quantity": 8, "unit_price": 33.0 }
       ],
       "total_quantity": 20,
-      "total_amount": 2820
+      "total_amount": 2820.0
     },
     {
       "id": "ORD-024",
@@ -1964,19 +1793,11 @@
       "creation_date": "2025-12-22T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-037",
-          "quantity": 10,
-          "unit_price": 278
-        },
-        {
-          "product_id": "PRD-046",
-          "quantity": 5,
-          "unit_price": 65
-        }
+        { "product_id": "PRD-037", "quantity": 10, "unit_price": 278.0 },
+        { "product_id": "PRD-046", "quantity": 5, "unit_price": 65.0 }
       ],
       "total_quantity": 15,
-      "total_amount": 3105
+      "total_amount": 3105.0
     },
     {
       "id": "ORD-025",
@@ -1985,19 +1806,11 @@
       "creation_date": "2025-04-21T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-038",
-          "quantity": 18,
-          "unit_price": 92
-        },
-        {
-          "product_id": "PRD-043",
-          "quantity": 12,
-          "unit_price": 200
-        }
+        { "product_id": "PRD-038", "quantity": 18, "unit_price": 92.0 },
+        { "product_id": "PRD-043", "quantity": 12, "unit_price": 200.0 }
       ],
       "total_quantity": 30,
-      "total_amount": 4056
+      "total_amount": 4056.0
     },
     {
       "id": "ORD-026",
@@ -2006,19 +1819,11 @@
       "creation_date": "2025-06-30T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-001",
-          "quantity": 12,
-          "unit_price": 291
-        },
-        {
-          "product_id": "PRD-009",
-          "quantity": 8,
-          "unit_price": 80
-        }
+        { "product_id": "PRD-001", "quantity": 12, "unit_price": 291.0 },
+        { "product_id": "PRD-009", "quantity": 8, "unit_price": 80.0 }
       ],
       "total_quantity": 20,
-      "total_amount": 4132
+      "total_amount": 4132.0
     },
     {
       "id": "ORD-027",
@@ -2027,19 +1832,11 @@
       "creation_date": "2025-06-22T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-002",
-          "quantity": 15,
-          "unit_price": 98
-        },
-        {
-          "product_id": "PRD-019",
-          "quantity": 10,
-          "unit_price": 19
-        }
+        { "product_id": "PRD-002", "quantity": 15, "unit_price": 98.0 },
+        { "product_id": "PRD-019", "quantity": 10, "unit_price": 19.0 }
       ],
       "total_quantity": 25,
-      "total_amount": 1660
+      "total_amount": 1660.0
     },
     {
       "id": "ORD-028",
@@ -2048,19 +1845,11 @@
       "creation_date": "2025-07-07T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-004",
-          "quantity": 20,
-          "unit_price": 156
-        },
-        {
-          "product_id": "PRD-027",
-          "quantity": 15,
-          "unit_price": 38
-        }
+        { "product_id": "PRD-004", "quantity": 20, "unit_price": 156.0 },
+        { "product_id": "PRD-027", "quantity": 15, "unit_price": 38.0 }
       ],
       "total_quantity": 35,
-      "total_amount": 3690
+      "total_amount": 3690.0
     },
     {
       "id": "ORD-029",
@@ -2069,19 +1858,11 @@
       "creation_date": "2025-07-11T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-006",
-          "quantity": 12,
-          "unit_price": 99
-        },
-        {
-          "product_id": "PRD-035",
-          "quantity": 8,
-          "unit_price": 104
-        }
+        { "product_id": "PRD-006", "quantity": 12, "unit_price": 99.0 },
+        { "product_id": "PRD-035", "quantity": 8, "unit_price": 104.0 }
       ],
       "total_quantity": 20,
-      "total_amount": 2020
+      "total_amount": 2020.0
     },
     {
       "id": "ORD-030",
@@ -2090,19 +1871,11 @@
       "creation_date": "2025-08-29T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-007",
-          "quantity": 15,
-          "unit_price": 295
-        },
-        {
-          "product_id": "PRD-034",
-          "quantity": 12,
-          "unit_price": 50
-        }
+        { "product_id": "PRD-007", "quantity": 15, "unit_price": 295.0 },
+        { "product_id": "PRD-034", "quantity": 12, "unit_price": 50.0 }
       ],
       "total_quantity": 27,
-      "total_amount": 5025
+      "total_amount": 5025.0
     },
     {
       "id": "ORD-031",
@@ -2111,19 +1884,11 @@
       "creation_date": "2025-12-23T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-008",
-          "quantity": 18,
-          "unit_price": 57
-        },
-        {
-          "product_id": "PRD-022",
-          "quantity": 12,
-          "unit_price": 162
-        }
+        { "product_id": "PRD-008", "quantity": 18, "unit_price": 57.0 },
+        { "product_id": "PRD-022", "quantity": 12, "unit_price": 162.0 }
       ],
       "total_quantity": 30,
-      "total_amount": 2970
+      "total_amount": 2970.0
     },
     {
       "id": "ORD-032",
@@ -2132,19 +1897,11 @@
       "creation_date": "2025-07-16T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-010",
-          "quantity": 20,
-          "unit_price": 139
-        },
-        {
-          "product_id": "PRD-041",
-          "quantity": 15,
-          "unit_price": 24
-        }
+        { "product_id": "PRD-010", "quantity": 20, "unit_price": 139.0 },
+        { "product_id": "PRD-041", "quantity": 15, "unit_price": 24.0 }
       ],
       "total_quantity": 35,
-      "total_amount": 3140
+      "total_amount": 3140.0
     },
     {
       "id": "ORD-033",
@@ -2153,19 +1910,11 @@
       "creation_date": "2025-06-23T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-014",
-          "quantity": 12,
-          "unit_price": 180
-        },
-        {
-          "product_id": "PRD-042",
-          "quantity": 8,
-          "unit_price": 91
-        }
+        { "product_id": "PRD-014", "quantity": 12, "unit_price": 180.0 },
+        { "product_id": "PRD-042", "quantity": 8, "unit_price": 91.0 }
       ],
       "total_quantity": 20,
-      "total_amount": 2888
+      "total_amount": 2888.0
     },
     {
       "id": "ORD-034",
@@ -2174,19 +1923,11 @@
       "creation_date": "2025-11-09T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-011",
-          "quantity": 10,
-          "unit_price": 20
-        },
-        {
-          "product_id": "PRD-032",
-          "quantity": 5,
-          "unit_price": 213
-        }
+        { "product_id": "PRD-011", "quantity": 10, "unit_price": 20.0 },
+        { "product_id": "PRD-032", "quantity": 5, "unit_price": 213.0 }
       ],
       "total_quantity": 15,
-      "total_amount": 1265
+      "total_amount": 1265.0
     },
     {
       "id": "ORD-035",
@@ -2195,19 +1936,11 @@
       "creation_date": "2025-04-05T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-003",
-          "quantity": 20,
-          "unit_price": 110
-        },
-        {
-          "product_id": "PRD-029",
-          "quantity": 10,
-          "unit_price": 15
-        }
+        { "product_id": "PRD-003", "quantity": 20, "unit_price": 110.0 },
+        { "product_id": "PRD-029", "quantity": 10, "unit_price": 15.0 }
       ],
       "total_quantity": 30,
-      "total_amount": 2350
+      "total_amount": 2350.0
     },
     {
       "id": "ORD-036",
@@ -2216,19 +1949,11 @@
       "creation_date": "2025-08-28T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-005",
-          "quantity": 18,
-          "unit_price": 200
-        },
-        {
-          "product_id": "PRD-037",
-          "quantity": 12,
-          "unit_price": 278
-        }
+        { "product_id": "PRD-005", "quantity": 18, "unit_price": 200.0 },
+        { "product_id": "PRD-037", "quantity": 12, "unit_price": 278.0 }
       ],
       "total_quantity": 30,
-      "total_amount": 6936
+      "total_amount": 6936.0
     },
     {
       "id": "ORD-037",
@@ -2237,19 +1962,11 @@
       "creation_date": "2025-10-10T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-013",
-          "quantity": 15,
-          "unit_price": 156
-        },
-        {
-          "product_id": "PRD-039",
-          "quantity": 10,
-          "unit_price": 234
-        }
+        { "product_id": "PRD-013", "quantity": 15, "unit_price": 156.0 },
+        { "product_id": "PRD-039", "quantity": 10, "unit_price": 234.0 }
       ],
       "total_quantity": 25,
-      "total_amount": 4680
+      "total_amount": 4680.0
     },
     {
       "id": "ORD-038",
@@ -2258,19 +1975,11 @@
       "creation_date": "2025-08-28T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-016",
-          "quantity": 20,
-          "unit_price": 104
-        },
-        {
-          "product_id": "PRD-044",
-          "quantity": 15,
-          "unit_price": 58
-        }
+        { "product_id": "PRD-016", "quantity": 20, "unit_price": 104.0 },
+        { "product_id": "PRD-044", "quantity": 15, "unit_price": 58.0 }
       ],
       "total_quantity": 35,
-      "total_amount": 2950
+      "total_amount": 2950.0
     },
     {
       "id": "ORD-039",
@@ -2279,19 +1988,11 @@
       "creation_date": "2026-03-04T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-017",
-          "quantity": 8,
-          "unit_price": 249
-        },
-        {
-          "product_id": "PRD-045",
-          "quantity": 12,
-          "unit_price": 73
-        }
+        { "product_id": "PRD-017", "quantity": 8, "unit_price": 249.0 },
+        { "product_id": "PRD-045", "quantity": 12, "unit_price": 73.0 }
       ],
       "total_quantity": 20,
-      "total_amount": 2868
+      "total_amount": 2868.0
     },
     {
       "id": "ORD-040",
@@ -2300,19 +2001,11 @@
       "creation_date": "2025-11-15T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-018",
-          "quantity": 12,
-          "unit_price": 228
-        },
-        {
-          "product_id": "PRD-046",
-          "quantity": 10,
-          "unit_price": 65
-        }
+        { "product_id": "PRD-018", "quantity": 12, "unit_price": 228.0 },
+        { "product_id": "PRD-046", "quantity": 10, "unit_price": 65.0 }
       ],
       "total_quantity": 22,
-      "total_amount": 3386
+      "total_amount": 3386.0
     },
     {
       "id": "ORD-041",
@@ -2321,19 +2014,11 @@
       "creation_date": "2025-12-14T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-021",
-          "quantity": 15,
-          "unit_price": 86
-        },
-        {
-          "product_id": "PRD-048",
-          "quantity": 10,
-          "unit_price": 130
-        }
+        { "product_id": "PRD-021", "quantity": 15, "unit_price": 86.0 },
+        { "product_id": "PRD-048", "quantity": 10, "unit_price": 130.0 }
       ],
       "total_quantity": 25,
-      "total_amount": 2590
+      "total_amount": 2590.0
     },
     {
       "id": "ORD-042",
@@ -2342,19 +2027,11 @@
       "creation_date": "2025-09-13T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-023",
-          "quantity": 12,
-          "unit_price": 229
-        },
-        {
-          "product_id": "PRD-049",
-          "quantity": 8,
-          "unit_price": 28
-        }
+        { "product_id": "PRD-023", "quantity": 12, "unit_price": 229.0 },
+        { "product_id": "PRD-049", "quantity": 8, "unit_price": 28.0 }
       ],
       "total_quantity": 20,
-      "total_amount": 2972
+      "total_amount": 2972.0
     },
     {
       "id": "ORD-043",
@@ -2363,19 +2040,11 @@
       "creation_date": "2025-06-30T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-024",
-          "quantity": 10,
-          "unit_price": 32
-        },
-        {
-          "product_id": "PRD-043",
-          "quantity": 5,
-          "unit_price": 200
-        }
+        { "product_id": "PRD-024", "quantity": 10, "unit_price": 32.0 },
+        { "product_id": "PRD-043", "quantity": 5, "unit_price": 200.0 }
       ],
       "total_quantity": 15,
-      "total_amount": 1320
+      "total_amount": 1320.0
     },
     {
       "id": "ORD-044",
@@ -2384,19 +2053,11 @@
       "creation_date": "2025-10-06T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-025",
-          "quantity": 6,
-          "unit_price": 183
-        },
-        {
-          "product_id": "PRD-050",
-          "quantity": 8,
-          "unit_price": 88
-        }
+        { "product_id": "PRD-025", "quantity": 6, "unit_price": 183.0 },
+        { "product_id": "PRD-050", "quantity": 8, "unit_price": 88.0 }
       ],
       "total_quantity": 14,
-      "total_amount": 1802
+      "total_amount": 1802.0
     },
     {
       "id": "ORD-045",
@@ -2405,19 +2066,11 @@
       "creation_date": "2025-04-15T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-026",
-          "quantity": 12,
-          "unit_price": 174
-        },
-        {
-          "product_id": "PRD-031",
-          "quantity": 8,
-          "unit_price": 162
-        }
+        { "product_id": "PRD-026", "quantity": 12, "unit_price": 174.0 },
+        { "product_id": "PRD-031", "quantity": 8, "unit_price": 162.0 }
       ],
       "total_quantity": 20,
-      "total_amount": 3384
+      "total_amount": 3384.0
     },
     {
       "id": "ORD-046",
@@ -2426,19 +2079,11 @@
       "creation_date": "2025-03-26T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-028",
-          "quantity": 10,
-          "unit_price": 145
-        },
-        {
-          "product_id": "PRD-040",
-          "quantity": 5,
-          "unit_price": 33
-        }
+        { "product_id": "PRD-028", "quantity": 10, "unit_price": 145.0 },
+        { "product_id": "PRD-040", "quantity": 5, "unit_price": 33.0 }
       ],
       "total_quantity": 15,
-      "total_amount": 1615
+      "total_amount": 1615.0
     },
     {
       "id": "ORD-047",
@@ -2447,19 +2092,11 @@
       "creation_date": "2025-10-19T12:00:00Z",
       "status": "pending",
       "items": [
-        {
-          "product_id": "PRD-030",
-          "quantity": 12,
-          "unit_price": 70
-        },
-        {
-          "product_id": "PRD-038",
-          "quantity": 8,
-          "unit_price": 92
-        }
+        { "product_id": "PRD-030", "quantity": 12, "unit_price": 70.0 },
+        { "product_id": "PRD-038", "quantity": 8, "unit_price": 92.0 }
       ],
       "total_quantity": 20,
-      "total_amount": 1576
+      "total_amount": 1576.0
     },
     {
       "id": "ORD-048",
@@ -2468,19 +2105,11 @@
       "creation_date": "2026-02-10T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-033",
-          "quantity": 15,
-          "unit_price": 11
-        },
-        {
-          "product_id": "PRD-047",
-          "quantity": 10,
-          "unit_price": 79
-        }
+        { "product_id": "PRD-033", "quantity": 15, "unit_price": 11.0 },
+        { "product_id": "PRD-047", "quantity": 10, "unit_price": 79.0 }
       ],
       "total_quantity": 25,
-      "total_amount": 955
+      "total_amount": 955.0
     },
     {
       "id": "ORD-049",
@@ -2489,19 +2118,11 @@
       "creation_date": "2025-10-01T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-036",
-          "quantity": 12,
-          "unit_price": 94
-        },
-        {
-          "product_id": "PRD-002",
-          "quantity": 8,
-          "unit_price": 98
-        }
+        { "product_id": "PRD-036", "quantity": 12, "unit_price": 94.0 },
+        { "product_id": "PRD-002", "quantity": 8, "unit_price": 98.0 }
       ],
       "total_quantity": 20,
-      "total_amount": 1912
+      "total_amount": 1912.0
     },
     {
       "id": "ORD-050",
@@ -2510,21 +2131,14 @@
       "creation_date": "2025-11-05T12:00:00Z",
       "status": "received",
       "items": [
-        {
-          "product_id": "PRD-020",
-          "quantity": 15,
-          "unit_price": 171
-        },
-        {
-          "product_id": "PRD-012",
-          "quantity": 10,
-          "unit_price": 120
-        }
+        { "product_id": "PRD-020", "quantity": 15, "unit_price": 171.0 },
+        { "product_id": "PRD-012", "quantity": 10, "unit_price": 120.0 }
       ],
       "total_quantity": 25,
-      "total_amount": 3765
+      "total_amount": 3765.0
     }
   ],
+
   "users": [
     {
       "id": "USR-4c3e2a1f",
@@ -2562,6 +2176,7 @@
       "role": "admin"
     }
   ],
+
   "activity_log": [
     {
       "id": "ACT-001",
