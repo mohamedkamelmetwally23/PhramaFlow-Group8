@@ -1,10 +1,10 @@
-import loadLayout from "../ui/layout.js";
-import { getActivityLogs } from "../api/activityLogApi.js";
+import loadLayout from '../ui/layout.js';
+import { getActivityLogs } from '../api/activityLogApi.js';
 
 // ===================== UTILITIES =====================
 
 const formatDate = (timestamp) => {
-  if (!timestamp) return "N/A";
+  if (!timestamp) return 'N/A';
 
   try {
     const date = new Date(timestamp);
@@ -14,18 +14,18 @@ const formatDate = (timestamp) => {
     const diffHours = Math.floor(diffMs / 3600000);
     const diffDays = Math.floor(diffMs / 86400000);
 
-    if (diffMins < 1) return "Just now";
+    if (diffMins < 1) return 'Just now';
     if (diffMins < 60) return `${diffMins} min ago`;
     if (diffHours < 24)
-      return `${diffHours} hour${diffHours > 1 ? "s" : ""} ago`;
-    if (diffDays < 7) return `${diffDays} day${diffDays > 1 ? "s" : ""} ago`;
+      return `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
+    if (diffDays < 7) return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
 
-    return date.toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
     });
   } catch (error) {
     return timestamp;
@@ -36,7 +36,7 @@ const formatDate = (timestamp) => {
  * Adds global CSS styles for animations and transitions
  */
 const addStyles = () => {
-  const style = document.createElement("style");
+  const style = document.createElement('style');
   style.textContent = `
     .hover-shadow {
       transition: all 0.3s ease;
@@ -63,68 +63,68 @@ const addStyles = () => {
 };
 
 const getActionBadgeClass = (action) => {
-  const actionLower = (action || "").toLowerCase().trim();
+  const actionLower = (action || '').toLowerCase().trim();
 
-  if (["add", "create", "new"].includes(actionLower)) {
-    return "bg-success bg-opacity-10 text-success border-0";
+  if (['add', 'create', 'new'].includes(actionLower)) {
+    return 'bg-success bg-opacity-10 text-success border-0';
   }
 
-  if (["edit", "update", "modified"].includes(actionLower)) {
-    return "bg-warning bg-opacity-10 text-warning border-0";
+  if (['edit', 'update', 'modified'].includes(actionLower)) {
+    return 'bg-warning bg-opacity-10 text-warning border-0';
   }
 
-  if (["delete", "remove", "deleted"].includes(actionLower)) {
-    return "bg-danger bg-opacity-10 text-danger border-0";
+  if (['delete', 'remove', 'deleted'].includes(actionLower)) {
+    return 'bg-danger bg-opacity-10 text-danger border-0';
   }
 
-  return "bg-primary bg-opacity-10 text-primary border-0";
+  return 'bg-primary bg-opacity-10 text-primary border-0';
 };
 
 const getActionIcon = (action) => {
-  const actionLower = (action || "").toLowerCase().trim();
+  const actionLower = (action || '').toLowerCase().trim();
 
-  if (["add", "create", "new"].includes(actionLower)) {
-    return "fa-plus-circle";
+  if (['add', 'create', 'new'].includes(actionLower)) {
+    return 'fa-plus-circle';
   }
 
-  if (["edit", "update", "modified"].includes(actionLower)) {
-    return "fa-edit";
+  if (['edit', 'update', 'modified'].includes(actionLower)) {
+    return 'fa-edit';
   }
 
-  if (["delete", "remove", "deleted"].includes(actionLower)) {
-    return "fa-trash-alt";
+  if (['delete', 'remove', 'deleted'].includes(actionLower)) {
+    return 'fa-trash-alt';
   }
 
-  return "fa-info-circle";
+  return 'fa-info-circle';
 };
 
 const getEntityIcon = (entityType) => {
-  const typeLower = (entityType || "").toLowerCase().trim();
+  const typeLower = (entityType || '').toLowerCase().trim();
 
   const iconMap = {
-    product: "fa-box",
-    products: "fa-box",
-    user: "fa-user-circle",
-    users: "fa-user-circle",
-    order: "fa-shopping-cart",
-    orders: "fa-shopping-cart",
-    category: "fa-tags",
-    categories: "fa-tags",
-    review: "fa-star",
-    reviews: "fa-star",
+    product: 'fa-box',
+    products: 'fa-box',
+    user: 'fa-user-circle',
+    users: 'fa-user-circle',
+    order: 'fa-shopping-cart',
+    orders: 'fa-shopping-cart',
+    category: 'fa-tags',
+    categories: 'fa-tags',
+    review: 'fa-star',
+    reviews: 'fa-star',
   };
 
-  return iconMap[typeLower] || "fa-tag";
+  return iconMap[typeLower] || 'fa-tag';
 };
 
 const getActionTextColor = (action) => {
   const badgeClass = getActionBadgeClass(action);
 
-  if (badgeClass.includes("text-success")) return "text-success";
-  if (badgeClass.includes("text-warning")) return "text-warning";
-  if (badgeClass.includes("text-danger")) return "text-danger";
+  if (badgeClass.includes('text-success')) return 'text-success';
+  if (badgeClass.includes('text-warning')) return 'text-warning';
+  if (badgeClass.includes('text-danger')) return 'text-danger';
 
-  return "text-primary";
+  return 'text-primary';
 };
 
 // ===================== FILTER SYSTEM =====================
@@ -133,7 +133,7 @@ let allActivities = []; // Store original activities
 let activitiesContainer = null;
 
 const updateFilterOptions = (activities) => {
-  const actionFilter = document.getElementById("actionFilter");
+  const actionFilter = document.getElementById('actionFilter');
   if (actionFilter) {
     const actions = new Set();
     activities.forEach((act) => {
@@ -149,7 +149,7 @@ const updateFilterOptions = (activities) => {
     actionFilter.innerHTML = options;
   }
 
-  const entityFilter = document.getElementById("entityFilter");
+  const entityFilter = document.getElementById('entityFilter');
   if (entityFilter) {
     const entities = new Set();
     activities.forEach((act) => {
@@ -165,7 +165,7 @@ const updateFilterOptions = (activities) => {
     entityFilter.innerHTML = options;
   }
 
-  const userFilter = document.getElementById("userFilter");
+  const userFilter = document.getElementById('userFilter');
   if (userFilter) {
     const users = new Set();
     activities.forEach((act) => {
@@ -183,15 +183,15 @@ const updateFilterOptions = (activities) => {
 };
 
 const filterActivities = () => {
-  const actionFilter = document.getElementById("actionFilter");
-  const entityFilter = document.getElementById("entityFilter");
-  const userFilter = document.getElementById("userFilter");
-  const searchInput = document.getElementById("searchInput");
+  const actionFilter = document.getElementById('actionFilter');
+  const entityFilter = document.getElementById('entityFilter');
+  const userFilter = document.getElementById('userFilter');
+  const searchInput = document.getElementById('searchInput');
 
-  const selectedAction = actionFilter?.value || "";
-  const selectedEntity = entityFilter?.value || "";
-  const selectedUser = userFilter?.value || "";
-  const searchTerm = searchInput?.value.toLowerCase().trim() || "";
+  const selectedAction = actionFilter?.value || '';
+  const selectedEntity = entityFilter?.value || '';
+  const selectedUser = userFilter?.value || '';
+  const searchTerm = searchInput?.value.toLowerCase().trim() || '';
 
   return allActivities.filter((activity) => {
     if (selectedAction && activity.action?.toLowerCase() !== selectedAction)
@@ -210,7 +210,7 @@ const filterActivities = () => {
         activity.userName,
         activity.entity_type,
       ]
-        .join(" ")
+        .join(' ')
         .toLowerCase();
 
       if (!searchableText.includes(searchTerm)) return false;
@@ -227,18 +227,18 @@ const applyFilters = () => {
 };
 
 const setupFilters = () => {
-  const actionFilter = document.getElementById("actionFilter");
-  const entityFilter = document.getElementById("entityFilter");
-  const userFilter = document.getElementById("userFilter");
-  const searchInput = document.getElementById("searchInput");
+  const actionFilter = document.getElementById('actionFilter');
+  const entityFilter = document.getElementById('entityFilter');
+  const userFilter = document.getElementById('userFilter');
+  const searchInput = document.getElementById('searchInput');
 
-  if (actionFilter) actionFilter.addEventListener("change", applyFilters);
-  if (entityFilter) entityFilter.addEventListener("change", applyFilters);
-  if (userFilter) userFilter.addEventListener("change", applyFilters);
+  if (actionFilter) actionFilter.addEventListener('change', applyFilters);
+  if (entityFilter) entityFilter.addEventListener('change', applyFilters);
+  if (userFilter) userFilter.addEventListener('change', applyFilters);
 
   if (searchInput) {
     let debounceTimer;
-    searchInput.addEventListener("input", () => {
+    searchInput.addEventListener('input', () => {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(applyFilters, 300);
     });
@@ -264,26 +264,26 @@ const displayActivity = (activity, container) => {
                 <i class="fas ${actionIcon} ${textColor}"></i>
               </div>
               <h6 class="fw-semibold text-dark mb-0">
-                ${activity.description || activity.action || "N/A"}
+                ${activity.description || activity.action || 'N/A'}
               </h6>
             </div>
             <span class="badge ${badgeClass} px-3 py-1 rounded-pill fw-medium text-capitalize">
               <i class="fas ${actionIcon} me-1"></i>
-              ${activity.action || "N/A"}
+              ${activity.action || 'N/A'}
             </span>
           </div>
           <div class="d-flex align-items-center flex-wrap gap-3 mt-3 pt-1">
             <span class="small text-secondary">
               <i class="fas fa-user-circle me-1"></i>
-              ${activity.userName || "Unknown User"}
+              ${activity.userName || 'Unknown User'}
             </span>
             <span class="small text-secondary">
               <i class="fas ${entityIcon} me-1"></i>
-              ${activity.entity_type || "Unknown"}
+              ${activity.entity_type || 'Unknown'}
             </span>
             <span class="small text-secondary">
               <i class="fas fa-calendar-alt me-1"></i>
-              ${formatDate(activity.timestamp) || "N/A"}
+              ${formatDate(activity.timestamp) || 'N/A'}
             </span>
           </div>
         </div>
@@ -291,11 +291,11 @@ const displayActivity = (activity, container) => {
     </div>
   `;
 
-  container.insertAdjacentHTML("beforeend", markup);
+  container.insertAdjacentHTML('beforeend', markup);
 };
 
 const renderActivities = (activities, container) => {
-  container.innerHTML = "";
+  container.innerHTML = '';
 
   if (!activities || activities.length === 0) {
     container.innerHTML = `
@@ -327,17 +327,16 @@ const showError = (container) => {
 // ===================== INITIALIZATION =====================
 
 const init = async () => {
-  loadLayout("Activity Log");
-  activitiesContainer = document.querySelector(".activity-container");
+  loadLayout('Activity Log');
+  activitiesContainer = document.querySelector('.activity-container');
 
   if (!activitiesContainer) {
-    console.error("activity-container not found");
+    console.error('activity-container not found');
     return;
   }
 
   try {
     const response = await getActivityLogs();
-    console.log("API Response:", response);
 
     allActivities = response.data || response;
 
@@ -345,7 +344,7 @@ const init = async () => {
     setupFilters();
     renderActivities(allActivities, activitiesContainer);
   } catch (err) {
-    console.error("Failed to load activities:", err);
+    console.error('Failed to load activities:', err);
     showError(activitiesContainer);
   }
 };
