@@ -47,14 +47,14 @@ function actionsHTML(supplier) {
   const isDisabled = supplier.ProductsSupplied > 0;
   return `
     <button class="btn btn-sm edit-btn border-0">
-      <i class="fa-solid fa-pen-to-square edit-icon"></i>
+      <i class="fa-solid fa-pen-to-square edit-icon text-primary"></i>
     </button>
 
     <button 
         class="btn btn-sm delete-btn border-0 ${isDisabled ? "disabled" : ""}"
         ${isDisabled ? "disabled" : ""}
     >
-        <i class="fa-solid fa-trash delete-icon"></i>
+        <i class="fa-solid fa-trash delete-icon text-danger"></i>
     </button>
   `;
 }
