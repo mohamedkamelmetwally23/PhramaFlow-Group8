@@ -86,7 +86,7 @@ table td {
 
 /* Order Details Styling */
 .order-details h6,
-span {
+.order-details span {
   color: var(--gray-400);
 }
 .order-details th {
@@ -97,7 +97,7 @@ span {
 }
 
 .order-details .tq,
-.tq-t {
+.order-details .tq-t {
   color: var(--gray-400);
 }
 

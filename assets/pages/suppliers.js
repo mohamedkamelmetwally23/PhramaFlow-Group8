@@ -1,11 +1,13 @@
-import loadLayout from '../ui/layout.js';
 import {
   createSupplier,
   deleteSupplier,
   getSuppliersWithProductSupplied,
   updateSupplier,
 } from '../api/suppliersApi.js';
+import { getCategories } from '../api/categoriesApi.js';
 import { renderTablePage } from '../components/table.js';
+import loadLayout from '../ui/layout.js';
+import showNotification from '../utils/notification.js';
 
 // =======================
 // Load Layout
@@ -13,6 +15,7 @@ loadLayout('Suppliers');
 
 // =======================
 // Variables
+const filterCategory = document.querySelector('#categoriesFilter');
 let suppliers = [];
 let editIndex = null;
 let deleteIndex = null;
@@ -25,6 +28,14 @@ async function loadSuppliers() {
   try {
     const res = await getSuppliersWithProductSupplied();
     suppliers = res?.data || [];
+    const categoriesRes = await getCategories();
+
+    categoriesRes.data.forEach((category) => {
+      filterCategory.innerHTML += `
+        <option class="text-capetalize" value="${category.id}">${category.name}</option>
+      `;
+    });
+
     updateCaption();
     renderTablePage(
       suppliers,
@@ -34,8 +45,8 @@ async function loadSuppliers() {
       'suppliers',
     );
   } catch (err) {
+    showNotification('error', 'Failed to load suppliers data.');
     console.error('Error loading suppliers:', err);
-    alert('Failed to load suppliers data.');
   }
 }
 
@@ -118,7 +129,7 @@ document
 
     const data = {
       supplier_name: document.getElementById('supplierName').value.trim(),
-      contact_name: document.getElementById('contactName').value.trim(),
+      contact_name: document.getElementById('categoriesFilter').value.trim(),
       contact_email: document.getElementById('contactEmail').value.trim(),
       contact_phone: document.getElementById('contactPhone').value.trim(),
       address: document.getElementById('address').value.trim(),
@@ -131,15 +142,19 @@ document
       !data.contact_phone ||
       !data.address
     ) {
-      alert('Please fill all fields');
+      showNotification('warning', 'Please fill all fields');
       return;
     }
 
     try {
       if (editIndex === null) {
-        await createSupplier(data);
+        const result = await createSupplier(data);
+        result.success &&
+          showNotification('success', 'Created Supplier successfully');
       } else {
-        await updateSupplier(suppliers[editIndex].id, data);
+        const result = await updateSupplier(suppliers[editIndex].id, data);
+        result.success &&
+          showNotification('success', 'Updated Supplier successfully');
       }
       await loadSuppliers();
       const modal = bootstrap.Modal.getInstance(
@@ -147,22 +162,28 @@ document
       );
       modal.hide();
     } catch (err) {
+      showNotification('error', 'Failed to save supplier.');
       console.error('Error saving supplier:', err);
-      alert('Failed to save supplier.');
     }
   });
 
 // =======================
-// Table Events (Edit / Delete)
-document.getElementById('tableBody').addEventListener('click', function (e) {
-  const row = e.target.closest('tr');
-  if (!row) return;
-  const index = Number(row.dataset.index);
+// Table & Cards Events (Edit / Delete)
+// =======================
+const handleActionClick = function (e) {
+  // بنشوف العنصر اللي اتداس عليه سواء كان صف في جدول أو كارت موبايل
+  const container = e.target.closest('[data-id]');
+  if (!container) return;
 
-  // EDIT
+  const supplierId = container.dataset.id;
+  // بنجيب البيانات الحقيقية من المصفوفة الأصلية باستخدام الـ ID
+  const s = suppliers.find((item) => item.id == supplierId);
+  const realIndex = suppliers.indexOf(s);
+
+  // --- EDIT ---
   if (e.target.closest('.edit-btn')) {
-    editIndex = index;
-    const s = suppliers[index];
+    editIndex = realIndex;
+
     document.getElementById('supplierName').value = s.supplier_name;
     document.getElementById('contactName').value = s.contact_name;
     document.getElementById('contactPhone').value = s.contact_phone;
@@ -180,13 +201,28 @@ document.getElementById('tableBody').addEventListener('click', function (e) {
     modal.show();
   }
 
-  // DELETE
+  // --- DELETE ---
   if (e.target.closest('.delete-btn')) {
-    deleteIndex = index;
+    // التأكد إن الزرار مش Disabled (عشان الموبايل أحياناً بيتخطى الـ CSS disabled)
+    if (e.target.closest('.delete-btn').classList.contains('disabled')) return;
+
+    deleteIndex = realIndex;
     const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
     modal.show();
   }
-});
+};
+
+// تشغيل الـ Listener على الجدول (Desktop)
+const tableBodyEl = document.getElementById('tableBody');
+if (tableBodyEl) {
+  tableBodyEl.addEventListener('click', handleActionClick);
+}
+
+// تشغيل الـ Listener على الكروت (Mobile)
+const cardsContainerEl = document.getElementById('cardsContainer');
+if (cardsContainerEl) {
+  cardsContainerEl.addEventListener('click', handleActionClick);
+}
 
 // =======================
 // Confirm Delete
@@ -196,7 +232,10 @@ document.getElementById('confirmDelete').addEventListener('click', async () => {
   const supplier = suppliers[deleteIndex];
 
   if (supplier.ProductsSupplied > 0) {
-    alert('Cannot delete this supplier because it supplies products.');
+    showNotification(
+      'error',
+      'Cannot delete this supplier because it supplies products.',
+    );
     return;
   }
 
@@ -209,18 +248,7 @@ document.getElementById('confirmDelete').addEventListener('click', async () => {
     );
     modal.hide();
   } catch (err) {
+    showNotification('error', 'Failed to delete supplier');
     console.error('Error deleting supplier:', err);
-    alert('Failed to delete supplier.');
   }
 });
-
-// =======================
-// Delete Handler (used in button)
-// window.deleteSupplierHandler = function (button) {
-//   const row = button.closest('tr');
-//   if (!row) return;
-
-//   deleteIndex = Number(row.dataset.index);
-//   const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
-//   modal.show();
-// };

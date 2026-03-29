@@ -22,11 +22,12 @@ export const formatCurrency = (value) => {
 };
 
 // Format date ==> (Mar 3 2026)
-export const formatDate = (dateString) =>
+export const formatDate = (dateString, showTime = false) =>
   new Date(dateString).toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
+    ...(showTime && { hour: '2-digit', minute: '2-digit' }),
   });
 
 // Generate a color based on text.

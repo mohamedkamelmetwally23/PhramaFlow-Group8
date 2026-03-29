@@ -72,7 +72,9 @@
       type="module"
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.min.js"
     ></script>
-    <!--  -->
+    <!-- Session Script -->
+    <script type="module" src="/assets/pages/session.js"></script>
+    <!-- Custom Script -->
     <script type="module" src="../assets/pages/reports.js"></script>
   </head>
 
@@ -165,12 +167,13 @@
                         </li>
                       </ul>
                     </div>
-                    <!-- <button
+                    <button
                       class="btn btn-outline-secondary border px-4 py-2 rounded-3 d-flex align-items-center gap-2"
+                      id="exportReportsBtn"
                     >
                       <i class="fa fa-download"></i>
                       <span>Export Report</span>
-                    </button> -->
+                    </button>
                   </div>
                 </div>
               </section>
@@ -366,7 +369,7 @@
                     </tr>
                   </thead>
 
-                  <tbody class=""></tbody>
+                  <tbody class="category-summary-data"></tbody>
                 </table>
               </section>
             </div>

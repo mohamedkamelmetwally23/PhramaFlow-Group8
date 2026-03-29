@@ -2101,7 +2101,7 @@
       "order_number": "PO-2026-030",
       "supplier_id": "SUP-041",
       "creation_date": "2025-08-29T12:00:00Z",
-      "status": "received",
+      "status": "pending",
       "items": [
         {
           "product_id": "PRD-007",
