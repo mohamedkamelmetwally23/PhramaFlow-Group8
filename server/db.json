@@ -26,6 +26,7 @@
       "description": "Sterile solutions or suspensions for parenteral administration."
     }
   ],
+
   "suppliers": [
     {
       "id": "SUP-001",
@@ -428,6 +429,7 @@
       "address": "147 El-Horreya Ave, Dokki, Cairo, Egypt"
     }
   ],
+
   "products": [
     {
       "id": "PRD-001",
@@ -1030,6 +1032,7 @@
       "created_at": "2025-10-20T10:00:00Z"
     }
   ],
+
   "stock_adjustments": [
     {
       "id": "STK-001",
@@ -1482,6 +1485,7 @@
       "user": "Admin"
     }
   ],
+
   "purchase_orders": [
     {
       "id": "ORD-001",
@@ -2121,7 +2125,7 @@
       "order_number": "PO-2026-030",
       "supplier_id": "SUP-041",
       "creation_date": "2025-08-29T12:00:00Z",
-      "status": "pending",
+      "status": "received",
       "items": [
         {
           "product_id": "PRD-007",
@@ -2748,6 +2752,7 @@
       "total_amount": 608.4
     }
   ],
+
   "users": [
     {
       "id": "USR-4c3e2a1f",
@@ -2785,6 +2790,7 @@
       "role": "admin"
     }
   ],
+
   "activity_log": [
     {
       "id": "ACT-001",
