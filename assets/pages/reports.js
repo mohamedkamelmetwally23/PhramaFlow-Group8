@@ -9,6 +9,7 @@ import {
   showTableLoader,
 } from '../utils/helpers.js';
 import loadLayout from '../ui/layout.js';
+import showNotification from '../utils/notification.js';
 
 // Elements
 const totalValueEl = document.querySelector('.stat-value');
@@ -256,6 +257,51 @@ document.querySelectorAll('.filter-opt').forEach((item) => {
     updateDashboardWithFilter(filtered);
   });
 });
+
+//----------------------------------------------
+// EXPORT CATEGORY SUMMARY
+const exportCategorySummaryToCSV = () => {
+  const rows = document.querySelectorAll('.category-summary-data tr');
+  if (!rows.length) {
+    showNotification('warning', 'No data to export');
+    return;
+  }
+
+  const headers = ['Category', 'Products', 'Total Value', 'Avg. Price'];
+  const data = [];
+
+  rows.forEach((row) => {
+    const cells = row.querySelectorAll('td');
+    if (cells.length >= 4) {
+      const category = cells[0].innerText.trim();
+      const products = cells[1].innerText.trim();
+      const totalValue = cells[2].innerText.trim();
+      const avgPrice = cells[3].innerText.trim();
+      data.push([category, products, totalValue, avgPrice]);
+    }
+  });
+
+  const csvContent = [headers, ...data]
+    .map((row) => row.map((cell) => `"${cell.replace(/"/g, '""')}"`).join(','))
+    .join('\n');
+
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const link = document.createElement('a');
+  const url = URL.createObjectURL(blob);
+  link.href = url;
+  link.setAttribute(
+    'download',
+    `category_summary_${new Date().toISOString().slice(0, 19)}.csv`,
+  );
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+};
+
+document
+  .getElementById('exportReportsBtn')
+  .addEventListener('click', exportCategorySummaryToCSV);
 
 //-----------------------------------------------
 // Initialize : fetch products, set initial data, and render all charts/tables

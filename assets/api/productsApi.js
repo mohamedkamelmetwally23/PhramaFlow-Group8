@@ -1,12 +1,13 @@
-import Product from "../models/Product.js";
-import { apiRequest } from "./apiClient.js";
-import { generateId } from "../utils/helpers.js";
+import Product from '../models/Product.js';
+import { apiRequest } from './apiClient.js';
+import { generateId } from '../utils/helpers.js';
+import { createActivityLog } from './activityLogApi.js';
 
 // ===============================
 // Get All Products
 // ===============================
 export const getProducts = async () => {
-  return await apiRequest("products");
+  return await apiRequest('products');
 };
 
 // ===============================
@@ -21,23 +22,22 @@ export const getProductById = async (id) => {
 // ===============================
 export const getProductsWithRelations = async () => {
   const [productsRes, categoriesRes, suppliersRes] = await Promise.all([
-    apiRequest("products"),
-    apiRequest("categories"),
-    apiRequest("suppliers"),
+    apiRequest('products'),
+    apiRequest('categories'),
+    apiRequest('suppliers'),
   ]);
 
   const products = productsRes.data || [];
   const categories = categoriesRes.data || [];
   const suppliers = suppliersRes.data || [];
 
-  // 
+  //
   const mappedProducts = products.map((p) => {
     const categoryName =
-      categories.find((c) => c.id === p.category_id)?.name || "Unknown";
+      categories.find((c) => c.id === p.category_id)?.name || 'Unknown';
 
     const supplierName =
-      suppliers.find((s) => s.id === p.supplier_id)?.supplier_name ||
-      "Unknown";
+      suppliers.find((s) => s.id === p.supplier_id)?.supplier_name || 'Unknown';
 
     return {
       ...p,
@@ -53,7 +53,7 @@ export const getProductsWithRelations = async () => {
 // Create Product
 // ===============================
 export const createProduct = async (data) => {
-  const productId = generateId("PRD");
+  const productId = generateId('PRD');
 
   const newProduct = new Product({
     id: productId,
@@ -65,45 +65,81 @@ export const createProduct = async (data) => {
     price: data.price,
     expire_date: data.expire_date,
     supplier_id: data.supplier_id,
-    created_at: data.created_at,
+    created_at: data.created_at || new Date().toISOString(),
   });
 
-  return await apiRequest("products", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
+  const result = await apiRequest('products', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newProduct),
   });
+
+  if (!result.success) {
+    return { success: false, error: result.error };
+  }
+
+  await createActivityLog({
+    action: 'create',
+    entity_type: 'product',
+    entity_id: productId,
+    description: `Added new product: ${data.product_name}`,
+    user_id: 'USR-4c3e2a1f',
+  });
+
+  return result;
 };
 
 // ===============================
 // Update Product
 // ===============================
 export const updateProduct = async (productId, data) => {
-  const updatedProduct = new Product({
-    id: productId,
-    sku: data.sku,
-    product_name: data.product_name,
-    category_id: data.category_id,
-    quantity: data.quantity,
-    reorderLevel: data.reorderLevel,
-    price: data.price,
-    expire_date: data.expire_date,
-    supplier_id: data.supplier_id,
-    created_at: data.created_at,
+  const result = await apiRequest(`products/${productId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
   });
 
-  return await apiRequest(`products/${productId}`, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(updatedProduct),
+  if (!result.success) {
+    return { success: false, error: result.error };
+  }
+
+  await createActivityLog({
+    action: 'update',
+    entity_type: 'product',
+    entity_id: productId,
+    description: `Updated product: ${data.product_name}`,
+    user_id: 'USR-4c3e2a1f',
   });
+
+  return result;
 };
 
 // ===============================
 // Delete Product
 // ===============================
 export const deleteProduct = async (productId) => {
-  return await apiRequest(`products/${productId}`, {
-    method: "DELETE",
+  const productRes = await getProductById(productId);
+  if (!productRes.success) {
+    return { success: false, error: productRes.error };
+  }
+
+  const data = productRes.data?.product_name || 'Unknown';
+
+  const result = await apiRequest(`products/${productId}`, {
+    method: 'DELETE',
   });
+
+  if (!result.success) {
+    return { success: false, error: result.error };
+  }
+
+  await createActivityLog({
+    action: 'delete',
+    entity_type: 'product',
+    entity_id: productId,
+    description: `Deleted discontinued product: Old ${data.product_name} Modal`,
+    user_id: 'USR-4c3e2a1f',
+  });
+
+  return result;
 };

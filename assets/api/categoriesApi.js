@@ -1,5 +1,6 @@
 import Category from '../models/Category.js';
 import { generateId } from '../utils/helpers.js';
+import { createActivityLog } from './activityLogApi.js';
 import { apiRequest } from './apiClient.js';
 
 //---------------------------------
@@ -51,23 +52,49 @@ export const createCategory = async (data) => {
     category_description: data.description,
   });
 
-  return await apiRequest('categories', {
+  const result = await apiRequest('categories', {
     method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newCategory),
   });
+
+  if (!result.success) {
+    return { success: false, error: result.error };
+  }
+
+  await createActivityLog({
+    action: 'create',
+    entity_type: 'category',
+    entity_id: categoryId,
+    description: `Added new category: ${data.name}`,
+    user_id: 'USR-4c3e2a1f',
+  });
+
+  return result;
 };
 
 //---------------------------------
 // Update category by id
 export const updateCategory = async (id, updatedData) => {
-  return await apiRequest(`categories/${id}`, {
+  const result = await apiRequest(`categories/${id}`, {
     method: 'PATCH',
     headers: { 'Content-type': 'application/json' },
     body: JSON.stringify(updatedData),
   });
+
+  if (!result.success) {
+    return { success: false, error: result.error };
+  }
+
+  await createActivityLog({
+    action: 'update',
+    entity_type: 'category',
+    entity_id: id,
+    description: `Updated ${updatedData.name} category data`,
+    user_id: 'USR-4c3e2a1f',
+  });
+
+  return result;
 };
 
 //---------------------------------
@@ -87,5 +114,21 @@ export const deleteCategory = async (id) => {
     };
   }
 
-  return await apiRequest(`categories/${id}`, { method: 'DELETE' });
+  const categoryRes = await getCategoryById(id);
+  const data = categoryRes.data;
+
+  const result = await apiRequest(`categories/${id}`, { method: 'DELETE' });
+  if (!result.success) {
+    return { success: false, error: result.error };
+  }
+
+  await createActivityLog({
+    action: 'delete',
+    entity_type: 'category',
+    entity_id: id,
+    description: `Deleted obsolete category: ${data.name} (no products)`,
+    user_id: 'USR-4c3e2a1f',
+  });
+
+  return result;
 };

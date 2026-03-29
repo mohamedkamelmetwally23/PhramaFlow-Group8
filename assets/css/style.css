@@ -281,8 +281,78 @@ h3 {
   transition: transform 0.3s ease;
 }
 
-.w-custom {
-  width: 70px;
+/* ===== Desktop: Show Table / Hide Cards ===== */
+#dataTable {
+  display: table;
+}
+#cardsContainer {
+  display: none;
+}
+
+/* ===== Mobile: Show Cards / Hide Table ===== */
+@media (max-width: 768px) {
+  #dataTable {
+    display: none !important;
+  }
+  #cardsContainer {
+    display: block !important;
+  }
+
+  .product-card {
+    border: 1px solid #e5e7eb;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .product-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .product-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0;
+  }
+
+  .mobile-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .mobile-btn {
+    flex: 1;
+    background: #f3f4f6;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  .mobile-btn.delete-btn {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+  }
+  .mobile-btn.delete-btn:hover {
+    background-color: #f1b6bc;
+    color: #6a1a22;
+  }
+
+  .mobile-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 @media (min-width: 992px) {

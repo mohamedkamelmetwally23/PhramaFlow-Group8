@@ -9,7 +9,7 @@ const loadLayout = (pageTitle) => {
               <button class="navbar-toggler d-lg-none me-3 border-0 fs-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <a class="navbar-brand" href="../index.html">
+              <a class="navbar-brand" href="/views/dashboard.html">
                 <img
                   src="../assets/imgs/logo.png"
                   class="logo me-1"
@@ -43,7 +43,7 @@ const loadLayout = (pageTitle) => {
     {
       title: 'Dashboard',
       icon: '<i class="fa fa-chart-pie me-3"></i>',
-      href: '/index.html',
+      href: '/views/dashboard.html',
     },
     {
       title: 'Products',
