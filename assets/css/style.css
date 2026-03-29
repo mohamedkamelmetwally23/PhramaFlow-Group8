@@ -281,6 +281,10 @@ h3 {
   transition: transform 0.3s ease;
 }
 
+.w-custom {
+  width: 70px;
+}
+
 @media (min-width: 992px) {
   aside {
     width: 22% !important;
