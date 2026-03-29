@@ -43,7 +43,7 @@ _Project developed as part of the ITI Full‑Stack (MEARN) scholarship program._
 
 ```plaintext
 
-inventory-system/
+PhramaFlow-Group8/
 ├─ index.html                     # Main landing page / entry point
 ├─ FormRender.js                  # Modal/form helper scripts
 ├─ package.json                   # npm scripts and dependencies
@@ -80,8 +80,8 @@ Note: JavaScript sources are organized under `assets/` (API helpers, UI componen
 Follow these steps to run the project locally.
 
 ```bash
-git clone https://github.com/mohamedkamelmetwally23/inventory-system-group-8-.git
-cd inventory-system-group-8-
+git clone https://github.com/mohamedkamelmetwally23/PhramaFlow-Group8.git
+cd PhramaFlow-Group8
 npm install
 npm run dev
 ```
