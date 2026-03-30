@@ -4,7 +4,11 @@
   "scripts": {
     "server:db": "json-server --watch server/db.json --port 3000",
     "devserver": "live-server --port=2210",
-    "dev": "npm-run-all --parallel server:db devserver"
+    "dev": "npm-run-all --parallel server:db devserver",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "18.x"
   },
   "repository": {
     "type": "git",
