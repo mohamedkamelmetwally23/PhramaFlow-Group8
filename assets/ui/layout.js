@@ -1,5 +1,3 @@
-import { logout } from '../pages/Session.js';
-
 const headerEl = document.querySelector('header');
 const sidebarEl = document.querySelector('aside');
 
@@ -41,7 +39,7 @@ const loadLayout = (pageTitle) => {
               >
                 ${role[0]}U
               </div>
-              <button class="btn" id="logoutButton" onclick="logout()" title="logout">
+              <button class="btn logoutButton" id="logoutButton" title="logout">
                 <i class="fa-solid fa-right-from-bracket fs-4 text-primary"></i>
               </button>
             </div>

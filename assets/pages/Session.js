@@ -1,7 +1,7 @@
 // ===================== SESSION & TOKEN MANAGEMENT =====================
 function getCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
+  const cookies = document.cookie;
+  const parts = cookies.split(`${name}=`);
   if (parts.length === 2) return parts.pop().split(';').shift();
   return null;
 }
@@ -36,7 +36,13 @@ function protectPage() {
   }
 }
 
-window.logout = logout;
-
 protectPage();
 startTokenMonitor();
+
+//
+document.querySelector('header').addEventListener('click', (e) => {
+  const logoutBtn = e.target.closest('#logoutButton');
+  if (!logoutBtn) return;
+
+  logout();
+});

@@ -1,6 +1,6 @@
-import { apiRequest } from './apiClient.js';
 import ActivyLogs from '../models/ActivityLog.js';
 import { generateId } from '../utils/helpers.js';
+import { apiRequest } from './apiClient.js';
 
 // get all  ActivityLogs
 export const getActivityLogs = async () => {

@@ -1,1 +1,1 @@
-export const API_URL = 'https://pharmaflow-backend.railway.app';
+export const API_URL = 'http://localhost:3000';

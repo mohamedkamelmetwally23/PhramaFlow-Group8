@@ -78,7 +78,7 @@ signinbtn.addEventListener('click', (e) => {
 
     setTimeout(() => {
       window.location.href = './views/dashboard.html';
-    }, 1000);
+    }, 1500);
   } else {
     showNotification('error', 'Please enter valid Email and Password');
   }
