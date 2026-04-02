@@ -205,7 +205,9 @@
                     aria-labelledby="addProductModalLabel"
                     aria-hidden="true"
                   >
-                    <div class="modal-dialog modal-dialog-centered">
+                    <div
+                      class="modal-dialog modal-dialog-centered"
+                    >
                       <div class="modal-content border-0 shadow rounded-4">
                         <!-- Modal Header -->
                         <div
@@ -238,127 +240,143 @@
                         <!-- Modal Body -->
                         <div class="modal-body px-4 pt-4 pb-2">
                           <form id="addProductForm">
-                            <!-- SKU -->
-                            <div class="mb-3">
-                              <label
-                                for="productSKU"
-                                class="form-label fw-medium text-dark-blue"
-                                style="font-size: 14px"
-                              >
-                                SKU <span class="text-danger">*</span>
-                              </label>
-                              <input
-                                type="text"
-                                class="form-control py-2 rounded-3"
-                                id="productSKU"
-                                placeholder="e.g., MED-001"
-                              />
-                            </div>
+                            <div class="row">
+                              <div class="col-12 col-md-6">
+                                <!-- SKU -->
+                                <div class="mb-3">
+                                  <label
+                                    for="productSKU"
+                                    class="form-label fw-medium text-dark-blue"
+                                    style="font-size: 14px"
+                                  >
+                                    SKU <span class="text-danger">*</span>
+                                  </label>
+                                  <input
+                                    type="text"
+                                    class="form-control py-2 rounded-3"
+                                    id="productSKU"
+                                    placeholder="e.g., MED-001"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-12 col-md-6">
+                                <!-- Category -->
+                                <div class="mb-3">
+                                  <label
+                                    for="productCategory"
+                                    class="form-label fw-medium text-dark-blue"
+                                    style="font-size: 14px"
+                                  >
+                                    Category <span class="text-danger">*</span>
+                                  </label>
+                                  <select
+                                    class="form-select py-2 rounded-3"
+                                    id="productCategory"
+                                  >
+                                    <option value="" selected disabled>
+                                      Select Category
+                                    </option>
+                                  </select>
+                                </div>
+                              </div>
 
-                            <!-- Product Name -->
-                            <div class="mb-3">
-                              <label
-                                for="productName"
-                                class="form-label fw-medium text-dark-blue"
-                                style="font-size: 14px"
-                              >
-                                Product Name <span class="text-danger">*</span>
-                              </label>
-                              <input
-                                type="text"
-                                class="form-control py-2 rounded-3"
-                                id="productName"
-                                placeholder="e.g., Artificial Tears 0.5% Eye Drops"
-                              />
-                            </div>
+                              <div class="col-12">
+                                <!-- Product Name -->
+                                <div class="mb-3">
+                                  <label
+                                    for="productName"
+                                    class="form-label fw-medium text-dark-blue"
+                                    style="font-size: 14px"
+                                  >
+                                    Product Name
+                                    <span class="text-danger">*</span>
+                                  </label>
+                                  <input
+                                    type="text"
+                                    class="form-control py-2 rounded-3"
+                                    id="productName"
+                                    placeholder="e.g., Artificial Tears 0.5% Eye Drops"
+                                  />
+                                </div>
+                              </div>
 
-                            <!-- Category -->
-                            <div class="mb-3">
-                              <label
-                                for="productCategory"
-                                class="form-label fw-medium text-dark-blue"
-                                style="font-size: 14px"
-                              >
-                                Category <span class="text-danger">*</span>
-                              </label>
-                              <select
-                                class="form-select py-2 rounded-3"
-                                id="productCategory"
-                              >
-                                <option value="" selected disabled>
-                                  Select Category
-                                </option>
-                              </select>
-                            </div>
+                              <div class="col-12 col-md-6">
+                                <!-- Quantity -->
+                                <div class="mb-3">
+                                  <label
+                                    for="quantity"
+                                    class="form-label fw-medium text-dark-blue"
+                                    style="font-size: 14px"
+                                  >
+                                    Quantity <span class="text-danger">*</span>
+                                  </label>
+                                  <input
+                                    type="number"
+                                    class="form-control py-2 rounded-3"
+                                    id="quantity"
+                                    placeholder="e.g., 28"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-12 col-md-6">
+                                <!-- Reorder Level -->
+                                <div class="mb-3">
+                                  <label
+                                    for="reorderLevel"
+                                    class="form-label fw-medium text-dark-blue"
+                                    style="font-size: 14px"
+                                  >
+                                    Reorder Level
+                                    <span class="text-danger">*</span>
+                                  </label>
+                                  <input
+                                    type="number"
+                                    class="form-control py-2 rounded-3"
+                                    id="reorderLevel"
+                                    placeholder="e.g., 15"
+                                  />
+                                </div>
+                              </div>
 
-                            <!-- Quantity -->
-                            <div class="mb-3">
-                              <label
-                                for="quantity"
-                                class="form-label fw-medium text-dark-blue"
-                                style="font-size: 14px"
-                              >
-                                Quantity <span class="text-danger">*</span>
-                              </label>
-                              <input
-                                type="number"
-                                class="form-control py-2 rounded-3"
-                                id="quantity"
-                                placeholder="e.g., 28"
-                              />
-                            </div>
+                              <div class="col-12 col-md-6">
+                                <!-- Price -->
+                                <div class="mb-3">
+                                  <label
+                                    for="price"
+                                    class="form-label fw-medium text-dark-blue"
+                                    style="font-size: 14px"
+                                  >
+                                    Price ($) <span class="text-danger">*</span>
+                                  </label>
+                                  <input
+                                    type="number"
+                                    class="form-control py-2 rounded-3"
+                                    id="price"
+                                    step="0.01"
+                                    placeholder="e.g., 291.07"
+                                  />
+                                </div>
+                              </div>
 
-                            <!-- Reorder Level -->
-                            <div class="mb-3">
-                              <label
-                                for="reorderLevel"
-                                class="form-label fw-medium text-dark-blue"
-                                style="font-size: 14px"
-                              >
-                                Reorder Level <span class="text-danger">*</span>
-                              </label>
-                              <input
-                                type="number"
-                                class="form-control py-2 rounded-3"
-                                id="reorderLevel"
-                                placeholder="e.g., 15"
-                              />
+                              <div class="col-12 col-md-6">
+                                <!-- Expire Date -->
+                                <div class="mb-3">
+                                  <label
+                                    for="productExpireDate"
+                                    class="form-label fw-medium text-dark-blue"
+                                    style="font-size: 14px"
+                                  >
+                                    Expire Date
+                                    <span class="text-danger">*</span>
+                                  </label>
+                                  <input
+                                    type="date"
+                                    class="form-control py-2 rounded-3"
+                                    id="productExpireDate"
+                                  />
+                                </div>
+                              </div>
                             </div>
-
-                            <!-- Price -->
-                            <div class="mb-3">
-                              <label
-                                for="price"
-                                class="form-label fw-medium text-dark-blue"
-                                style="font-size: 14px"
-                              >
-                                Price ($) <span class="text-danger">*</span>
-                              </label>
-                              <input
-                                type="number"
-                                class="form-control py-2 rounded-3"
-                                id="price"
-                                step="0.01"
-                                placeholder="e.g., 291.07"
-                              />
-                            </div>
-
-                            <!-- Expire Date -->
-                            <div class="mb-3">
-                              <label
-                                for="productExpireDate"
-                                class="form-label fw-medium text-dark-blue"
-                                style="font-size: 14px"
-                              >
-                                Expire Date <span class="text-danger">*</span>
-                              </label>
-                              <input
-                                type="date"
-                                class="form-control py-2 rounded-3"
-                                id="productExpireDate"
-                              />
-                            </div>
-
                             <!-- Supplier Id -->
                             <div class="mb-3">
                               <label

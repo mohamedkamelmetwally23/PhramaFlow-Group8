@@ -426,6 +426,14 @@
       "contact_email": "melshahat799@gmail",
       "contact_phone": "01141316313",
       "address": "Mansoura, Egypt"
+    },
+    {
+      "id": "SUP-4ccdce06",
+      "supplier_name": "Kamel Comapny",
+      "contact_name": "Kaaameeeeel",
+      "contact_email": "kamel@gmail.com",
+      "contact_phone": "0100152315151",
+      "address": "Tanta, Egypt"
     }
   ],
   "products": [
@@ -433,7 +441,7 @@
       "sku": "MED-003",
       "product_name": "Artificial Tears 0.5% Eye Drops",
       "category_id": "CAT-002",
-      "quantity": 20,
+      "quantity": 10,
       "reorderLevel": 15,
       "price": 110.63,
       "expire_date": "2027-04-21",
@@ -551,7 +559,7 @@
       "sku": "MED-013",
       "product_name": "Clotrimazole 1% Ointment",
       "category_id": "CAT-003",
-      "quantity": 103,
+      "quantity": 109,
       "reorderLevel": 15,
       "price": 156.37,
       "expire_date": "2027-03-25",
@@ -599,7 +607,7 @@
       "sku": "MED-017",
       "product_name": "Gentamicin 0.1% Ointment",
       "category_id": "CAT-003",
-      "quantity": 33,
+      "quantity": 36,
       "reorderLevel": 15,
       "price": 249.21,
       "expire_date": "2030-01-28",
@@ -707,7 +715,7 @@
       "sku": "MED-026",
       "product_name": "Gentamicin 0.1% Ointment",
       "category_id": "CAT-003",
-      "quantity": 167,
+      "quantity": 179,
       "reorderLevel": 15,
       "price": 174.65,
       "expire_date": "2027-04-09",
@@ -767,7 +775,7 @@
       "sku": "MED-031",
       "product_name": "Ibuprofen 200mg Tablets",
       "category_id": "CAT-001",
-      "quantity": 211,
+      "quantity": 219,
       "reorderLevel": 15,
       "price": 161.98,
       "expire_date": "2029-03-20",
@@ -1014,16 +1022,27 @@
       "id": "PRD-da46657f"
     },
     {
-      "id": "PRD-e4e88026",
       "sku": "Tear110",
       "product_name": "Tear",
       "category_id": "CAT-004",
-      "quantity": 0,
+      "quantity": 15,
       "reorderLevel": 20,
       "price": 100,
       "expire_date": "2027-11-30",
       "supplier_id": "SUP-86d713c0",
-      "created_at": "2026-03-29T23:18:28.651Z"
+      "id": "PRD-e4e88026"
+    },
+    {
+      "id": "PRD-13c19207",
+      "sku": "KAM001",
+      "product_name": "Kamel",
+      "category_id": "CAT-005",
+      "quantity": 30,
+      "reorderLevel": 15,
+      "price": 300,
+      "expire_date": "2026-04-15",
+      "supplier_id": "SUP-4ccdce06",
+      "created_at": "2026-04-01T20:46:15.455Z"
     }
   ],
   "stock_adjustments": [
@@ -1559,7 +1578,7 @@
       "order_number": "PO-2026-004",
       "supplier_id": "SUP-038",
       "creation_date": "2025-12-09T12:00:00Z",
-      "status": "pending",
+      "status": "received",
       "items": [
         {
           "product_id": "PRD-002",
@@ -2450,7 +2469,7 @@
       "order_number": "PO-2026-045",
       "supplier_id": "SUP-025",
       "creation_date": "2025-04-15T12:00:00Z",
-      "status": "pending",
+      "status": "received",
       "items": [
         {
           "product_id": "PRD-026",
@@ -2464,7 +2483,8 @@
         }
       ],
       "total_quantity": 20,
-      "total_amount": 3384
+      "total_amount": 3384,
+      "quantityUpdated": true
     },
     {
       "id": "ORD-046",
@@ -2615,6 +2635,44 @@
       "total_quantity": 7,
       "total_amount": 1399.27,
       "id": "vjc8A-2",
+      "quantityUpdated": true
+    },
+    {
+      "order_number": "PO-2026-053",
+      "supplier_id": "SUP-002",
+      "creation_date": "2026-04-13",
+      "items": [
+        {
+          "product_id": "PRD-010",
+          "quantity": 1,
+          "unit_price": 139.29
+        }
+      ],
+      "status": "pending",
+      "total_quantity": 1,
+      "total_amount": 139.29,
+      "id": "JdT8vak"
+    },
+    {
+      "order_number": "PO-2026-054",
+      "supplier_id": "SUP-004",
+      "creation_date": "2026-04-01",
+      "items": [
+        {
+          "product_id": "PRD-013",
+          "quantity": 6,
+          "unit_price": 156.37
+        },
+        {
+          "product_id": "PRD-017",
+          "quantity": 3,
+          "unit_price": 249.21
+        }
+      ],
+      "status": "received",
+      "total_quantity": 9,
+      "total_amount": 1685.85,
+      "id": "4FpPmP3",
       "quantityUpdated": true
     }
   ],
@@ -3652,6 +3710,121 @@
       "description": "Adjusted stock for Tears : increase by 20 units. Reason: aa",
       "user_id": "USR-8e7b6c4d",
       "timestamp": "2026-03-29T23:21:26.860Z"
+    },
+    {
+      "id": "ACT-30d5f6f4",
+      "action": "create",
+      "entity_type": "product",
+      "entity_id": "PRD-93ea83ad",
+      "description": "Added new product: samd,asdm, msadm, asmd ,asdm ,asd",
+      "user_id": "USR-8e7b6c4d",
+      "timestamp": "2026-04-01T19:49:51.003Z"
+    },
+    {
+      "id": "ACT-79a8c8b9",
+      "action": "create",
+      "entity_type": "purchase_order",
+      "description": "Created purchase order PO-2026-053",
+      "user_id": "USR-8e7b6c4d",
+      "timestamp": "2026-04-01T20:20:14.233Z"
+    },
+    {
+      "id": "ACT-bf4aa2a4",
+      "action": "receive",
+      "entity_type": "purchase_order",
+      "entity_id": "ORD-045",
+      "description": "Purchase order received: PO-2026-045",
+      "user_id": "USR-8e7b6c4d",
+      "timestamp": "2026-04-01T20:20:42.817Z"
+    },
+    {
+      "id": "ACT-70545c8e",
+      "action": "update",
+      "entity_type": "product",
+      "entity_id": "PRD-003",
+      "description": "Updated product: Artificial Tears 0.5% Eye Drops",
+      "user_id": "USR-4c3e2a1f",
+      "timestamp": "2026-04-01T20:38:49.356Z"
+    },
+    {
+      "id": "ACT-cf3d6e60",
+      "action": "update",
+      "entity_type": "product",
+      "entity_id": "PRD-003",
+      "description": "Updated product: Artificial Tears 0.5% Eye Drops",
+      "user_id": "USR-4c3e2a1f",
+      "timestamp": "2026-04-01T20:39:06.809Z"
+    },
+    {
+      "id": "ACT-92789684",
+      "action": "update",
+      "entity_type": "product",
+      "entity_id": "PRD-93ea83ad",
+      "description": "Updated product: samd,asdm, msadm, asmd ,asdm ,asd",
+      "user_id": "USR-4c3e2a1f",
+      "timestamp": "2026-04-01T20:39:41.551Z"
+    },
+    {
+      "id": "ACT-2068b81e",
+      "action": "update",
+      "entity_type": "product",
+      "entity_id": "PRD-e4e88026",
+      "description": "Updated product: Tear",
+      "user_id": "USR-4c3e2a1f",
+      "timestamp": "2026-04-01T20:39:55.856Z"
+    },
+    {
+      "id": "ACT-ebcf11ed",
+      "action": "delete",
+      "entity_type": "product",
+      "entity_id": "PRD-93ea83ad",
+      "description": "Deleted discontinued product: Old samd,asdm, msadm, asmd ,asdm ,asd Modal",
+      "user_id": "USR-4c3e2a1f",
+      "timestamp": "2026-04-01T20:42:17.596Z"
+    },
+    {
+      "id": "ACT-69efa6ad",
+      "action": "create",
+      "entity_type": "supplier",
+      "entity_id": "SUP-4ccdce06",
+      "description": "Added new supplier: Kamel Comapny",
+      "user_id": "USR-4c3e2a1f",
+      "timestamp": "2026-04-01T20:45:13.332Z"
+    },
+    {
+      "id": "ACT-7fea0eea",
+      "action": "create",
+      "entity_type": "product",
+      "entity_id": "PRD-13c19207",
+      "description": "Added new product: Kamel",
+      "user_id": "USR-4c3e2a1f",
+      "timestamp": "2026-04-01T20:46:15.481Z"
+    },
+    {
+      "id": "ACT-4c021baa",
+      "action": "receive",
+      "entity_type": "purchase_order",
+      "entity_id": "ORD-004",
+      "description": "Purchase order received: PO-2026-004",
+      "user_id": "USR-4c3e2a1f",
+      "timestamp": "2026-04-01T20:49:24.681Z"
+    },
+    {
+      "id": "ACT-1093f95c",
+      "action": "create",
+      "entity_type": "purchase_order",
+      "description": "Created purchase order PO-2026-054",
+      "user_id": "USR-4c3e2a1f",
+      "timestamp": "2026-04-01T20:50:39.429Z"
+    },
+    {
+      "id": "ACT-3842374f",
+      "action": "receive",
+      "entity_type": "purchase_order",
+      "entity_id": "4FpPmP3",
+      "description": "Purchase order received: PO-2026-054",
+      "user_id": "USR-4c3e2a1f",
+      "timestamp": "2026-04-01T20:50:52.454Z"
     }
   ]
 }
